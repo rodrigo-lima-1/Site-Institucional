@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Projetos | Instituto TechFuturo</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>  
+<!-- PROJETOS PAGE -->
+<div class="page-content" id="projetos-page">
+  <!-- Hero Section -->
+  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/projetos/projeto_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Nossos Projetos</h1>
+        <p class="hero-subtitle">
+          Conheça as iniciativas que estão transformando vidas e comunidades 
+          através da tecnologia e educação.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtros Section -->
+  <section class="section" style="padding: var(--spacing-xl) 0;">
+    <div class="container">
+      <div class="filters-container" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-xl);">
+        <button class="filter-btn active" data-filter="all" onclick="filterProjects('all')">
+          Todos os Projetos
+        </button>
+        <button class="filter-btn" data-filter="active" onclick="filterProjects('active')">
+          Projetos Ativos
+        </button>
+        <button class="filter-btn" data-filter="completed" onclick="filterProjects('completed')">
+          Projetos Concluídos
+        </button>
+        <button class="filter-btn" data-filter="education" onclick="filterProjects('education')">
+          Educação
+        </button>
+        <button class="filter-btn" data-filter="social" onclick="filterProjects('social')">
+          Impacto Social
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos Ativos Section -->
+  <section class="section" id="active-projects-section">
+    <div class="container">
+      <h2 class="section-title">Projetos Ativos</h2>
+      <p class="section-subtitle">
+        Iniciativas em andamento que estão criando impacto positivo na vida de jovens e comunidades.
+      </p>
+      <div id="active-projects-container" class="grid grid-2">
+        <!-- Projetos ativos serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos Concluídos Section -->
+  <section class="section" id="completed-projects-section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Projetos Concluídos</h2>
+      <p class="section-subtitle">
+        Veja o legado dos nossos projetos finalizados e o impacto duradouro que criaram.
+      </p>
+      <div id="completed-projects-container" class="grid grid-2">
+        <!-- Projetos concluídos serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Impacto dos Projetos Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Impacto dos Nossos Projetos</h2>
+      <p class="section-subtitle">
+        Números que demonstram a transformação real que nossos projetos proporcionam.
+      </p>
+      
+      <div class="impact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-2xl);">
+        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); border-radius: var(--border-radius-lg);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">👥</div>
+          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">500+</div>
+          <div style="font-size: var(--font-size-lg);">Jovens Beneficiados</div>
+        </div>
+        
+        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: var(--white); border-radius: var(--border-radius-lg);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💼</div>
+          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">85%</div>
+          <div style="font-size: var(--font-size-lg);">Taxa de Empregabilidade</div>
+        </div>
+        
+        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); color: var(--white); border-radius: var(--border-radius-lg);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🏆</div>
+          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">15</div>
+          <div style="font-size: var(--font-size-lg);">Prêmios Recebidos</div>
+        </div>
+        
+        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: var(--white); border-radius: var(--border-radius-lg);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🌍</div>
+          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">50+</div>
+          <div style="font-size: var(--font-size-lg);">Comunidades Atendidas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos Section -->
+  <section class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">O Que Dizem Nossos Beneficiários</h2>
+      <p class="section-subtitle">
+        Histórias reais de transformação através dos nossos projetos.
+      </p>
+      
+      <div id="testimonials-container" class="grid grid-3">
+        <!-- Depoimentos serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Participar Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+    <div class="container">
+      <h2 class="section-title" style="color: var(--white);">Como Participar dos Nossos Projetos</h2>
+      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+        Existem várias formas de se envolver e contribuir para o sucesso dos nossos projetos.
+      </p>
+      
+      <div class="participation-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl);">
+        <div class="participation-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🎓</div>
+          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Seja um Aluno</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+            Inscreva-se em nossos programas e transforme sua carreira através da tecnologia.
+          </p>
+          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+            Inscrever-se
+          </a>
+        </div>
+        
+        <div class="participation-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🤝</div>
+          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Seja um Voluntário</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+            Compartilhe seu conhecimento e experiência como mentor ou instrutor.
+          </p>
+          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+            Voluntariar-se
+          </a>
+        </div>
+        
+        <div class="participation-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💰</div>
+          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Seja um Apoiador</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+            Contribua financeiramente ou com recursos para ampliar nosso impacto.
+          </p>
+          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+            Apoiar
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Estilos específicos da página de projetos */
+.filter-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.project-status {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.project-status.active {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.project-status.completed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.impact-card,
+.participation-card {
+  transition: transform var(--transition-normal);
+}
+
+.impact-card:hover,
+.participation-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-card {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary-color);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-family: serif;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: var(--spacing-lg);
+  color: var(--medium-gray);
+}
+
+.testimonial-author {
+  border-top: 1px solid var(--light-gray);
+  padding-top: var(--spacing-md);
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: var(--spacing-xs);
+}
+
+.author-role {
+  color: var(--medium-gray);
+  font-size: var(--font-size-sm);
+}
+</style>
+
+<script>
+// Script específico da página Projetos
+let allProjects = [];
+let currentFilter = 'all';
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Carregar todos os projetos
+  loadAllProjects();
+  
+  // Carregar depoimentos
+  loadTestimonials();
+  
+  // Adicionar animações aos elementos
+  observeElements();
+});
+
+function loadAllProjects() {
+  // Simular carregamento de projetos (em um projeto real, viria de uma API)
+  const activeProjects = [
+    {
+      id: 1,
+      title: "Code for Change",
+      description: "Um programa de mentoria e desenvolvimento de software onde jovens criam soluções tecnológicas para problemas sociais reais. Atualmente, estamos desenvolvendo um aplicativo para auxiliar na gestão de resíduos em comunidades.",
+      image: "public/images/projetos/projeto_image_1.png",
+      status: "active",
+      tags: ["Desenvolvimento", "Impacto Social", "Meio Ambiente"],
+      category: "social",
+      participants: 45,
+      duration: "12 meses"
+    },
+    {
+      id: 2,
+      title: "TechGirls",
+      description: "Iniciativa focada em incentivar a participação feminina na área de tecnologia, oferecendo cursos, workshops e mentorias exclusivas para garotas. Nosso objetivo é reduzir a lacuna de gênero no setor de TI.",
+      image: "public/images/projetos/projeto_image_2.png",
+      status: "active",
+      tags: ["Inclusão", "Educação", "Mulheres na Tecnologia"],
+      category: "education",
+      participants: 60,
+      duration: "Contínuo"
+    }
+  ];
+
+  const completedProjects = [
+    {
+      id: 101,
+      title: "Conecta Comunidade",
+      description: "Plataforma web que conecta voluntários a projetos sociais em suas comunidades, facilitando a organização e a participação em ações de impacto. Mais de 500 voluntários cadastrados e 100 projetos concluídos.",
+      image: "public/images/projetos/projeto_image_1.png",
+      status: "completed",
+      tags: ["Voluntariado", "Conectividade", "Comunidade"],
+      category: "social",
+      participants: 200,
+      duration: "18 meses"
+    },
+    {
+      id: 102,
+      title: "Alfabetização Digital para Idosos",
+      description: "Programa que ofereceu aulas básicas de informática e uso de smartphones para idosos, promovendo a inclusão digital e melhorando sua qualidade de vida. Mais de 200 idosos alfabetizados digitalmente.",
+      image: "public/images/projetos/projeto_image_2.png",
+      status: "completed",
+      tags: ["Inclusão Digital", "Terceira Idade", "Educação"],
+      category: "education",
+      participants: 200,
+      duration: "24 meses"
+    }
+  ];
+
+  allProjects = [...activeProjects, ...completedProjects];
+  
+  // Renderizar projetos
+  renderProjects();
+}
+
+function loadTestimonials() {
+  const testimonials = [
+    {
+      id: 1,
+      text: "O projeto Code for Change mudou completamente minha perspectiva sobre tecnologia. Hoje trabalho como desenvolvedor e uso meus conhecimentos para criar soluções que realmente fazem a diferença.",
+      name: "Pedro Henrique",
+      role: "Ex-aluno, Desenvolvedor Full-stack"
+    },
+    {
+      id: 2,
+      text: "Participar do TechGirls me deu a confiança que eu precisava para entrar na área de tecnologia. Hoje sou líder técnica em uma startup e mentoro outras mulheres.",
+      name: "Ana Carolina",
+      role: "Ex-aluna, Tech Lead"
+    },
+    {
+      id: 3,
+      text: "Através do programa de alfabetização digital, minha avó conseguiu se conectar com a família durante a pandemia. Foi emocionante ver ela fazendo videochamadas pela primeira vez.",
+      name: "Carlos Silva",
+      role: "Neto de beneficiária"
+    }
+  ];
+  
+  const container = document.getElementById('testimonials-container');
+  if (container) {
+    container.innerHTML = testimonials.map(testimonial => renderTestimonialCard(testimonial)).join('');
+  }
+}
+
+function renderProjects() {
+  const activeContainer = document.getElementById('active-projects-container');
+  const completedContainer = document.getElementById('completed-projects-container');
+  
+  if (!activeContainer || !completedContainer) return;
+  
+  // Filtrar projetos
+  const filteredProjects = filterProjectsByType(allProjects, currentFilter);
+  const activeProjects = filteredProjects.filter(project => project.status === 'active');
+  const completedProjects = filteredProjects.filter(project => project.status === 'completed');
+  
+  // Renderizar projetos ativos
+  activeContainer.innerHTML = activeProjects.map(project => renderProjectCard(project)).join('');
+  
+  // Renderizar projetos concluídos
+  completedContainer.innerHTML = completedProjects.map(project => renderProjectCard(project)).join('');
+  
+  // Mostrar/ocultar seções baseado no filtro
+  const activeSection = document.getElementById('active-projects-section');
+  const completedSection = document.getElementById('completed-projects-section');
+  
+  if (currentFilter === 'completed') {
+    activeSection.style.display = 'none';
+    completedSection.style.display = 'block';
+  } else if (currentFilter === 'active') {
+    activeSection.style.display = 'block';
+    completedSection.style.display = 'none';
+  } else {
+    activeSection.style.display = activeProjects.length > 0 ? 'block' : 'none';
+    completedSection.style.display = completedProjects.length > 0 ? 'block' : 'none';
+  }
+}
+
+function renderProjectCard(project) {
+  const tagsHtml = project.tags ? 
+    `<div class="card-tags">
+      ${project.tags.map(tag => `<span class="card-tag">${tag}</span>`).join('')}
+    </div>` : '';
+
+  const statusClass = project.status === 'active' ? 'active' : 'completed';
+  const statusText = project.status === 'active' ? '🔄 Em Andamento' : '✅ Concluído';
+
+  return `
+    <div class="card fade-in">
+      <img src="${project.image}" alt="${project.title}" class="card-image" loading="lazy">
+      <div class="card-content">
+        <h3 class="card-title">${project.title}</h3>
+        <div class="card-meta">
+          <span class="project-status ${statusClass}">${statusText}</span>
+          <span>👥 ${project.participants} participantes</span>
+          <span>⏱️ ${project.duration}</span>
+        </div>
+        <p class="card-description">${project.description}</p>
+        ${tagsHtml}
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="viewProjectDetails('${project.id}')">
+            Ver Detalhes
+          </button>
+          ${project.status === 'active' ? 
+            `<button class="btn btn-outline" onclick="joinProject('${project.id}')">
+              Participar
+            </button>` : ''
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderTestimonialCard(testimonial) {
+  return `
+    <div class="testimonial-card fade-in">
+      <p class="testimonial-text">${testimonial.text}</p>
+      <div class="testimonial-author">
+        <h4 class="author-name">${testimonial.name}</h4>
+        <p class="author-role">${testimonial.role}</p>
+      </div>
+    </div>
+  `;
+}
+
+function filterProjectsByType(projects, filter) {
+  if (filter === 'all') return projects;
+  if (filter === 'active' || filter === 'completed') {
+    return projects.filter(project => project.status === filter);
+  }
+  return projects.filter(project => project.category === filter);
+}
+
+function filterProjects(filter) {
+  currentFilter = filter;
+  
+  // Atualizar botões ativos
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+  
+  // Re-renderizar projetos
+  renderProjects();
+}
+
+function viewProjectDetails(projectId) {
+  // Implementar visualização de detalhes do projeto
+  alert(`Abrindo detalhes do projeto ${projectId}...`);
+  // Aqui você implementaria um modal ou página de detalhes
+}
+
+function joinProject(projectId) {
+  // Implementar inscrição no projeto
+  alert(`Redirecionando para inscrição no projeto ${projectId}...`);
+  // Aqui você implementaria um formulário de inscrição
+}
+
+function observeElements() {
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    // Observar elementos com animação
+    document.querySelectorAll('.fade-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  }
+  </script>
+  <script type="module">
+  import projetosContent from '../../data/projetos_content.js';
+
+  function renderProjetos() {
+    // Use projetosContent.activeProjects.projects e projetosContent.completedProjects.projects
+    // para renderizar os cards
+  }
+  renderProjetos();
+  </script> 
+  </body>

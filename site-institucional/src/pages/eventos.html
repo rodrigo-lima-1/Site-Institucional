@@ -1,0 +1,404 @@
+<!-- EVENTOS PAGE -->
+<div class="page-content" id="eventos-page">
+  <!-- Hero Section -->
+  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/eventos/evento_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Eventos</h1>
+        <p class="hero-subtitle">
+          Participe dos nossos workshops, palestras e eventos para se manter atualizado 
+          com as últimas tendências em tecnologia e networking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtros Section -->
+  <section class="section" style="padding: var(--spacing-xl) 0;">
+    <div class="container">
+      <div class="filters-container" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-xl);">
+        <button class="filter-btn active" data-filter="all" onclick="filterEvents('all')">
+          Todos os Eventos
+        </button>
+        <button class="filter-btn" data-filter="upcoming" onclick="filterEvents('upcoming')">
+          Próximos Eventos
+        </button>
+        <button class="filter-btn" data-filter="past" onclick="filterEvents('past')">
+          Eventos Passados
+        </button>
+        <button class="filter-btn" data-filter="workshop" onclick="filterEvents('workshop')">
+          Workshops
+        </button>
+        <button class="filter-btn" data-filter="palestra" onclick="filterEvents('palestra')">
+          Palestras
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Próximos Eventos Section -->
+  <section class="section" id="upcoming-events-section">
+    <div class="container">
+      <h2 class="section-title">Próximos Eventos</h2>
+      <p class="section-subtitle">
+        Não perca as oportunidades de aprendizado e networking que preparamos para você.
+      </p>
+      <div id="upcoming-events-container" class="grid grid-3">
+        <!-- Eventos futuros serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Eventos Passados Section -->
+  <section class="section" id="past-events-section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Eventos Anteriores</h2>
+      <p class="section-subtitle">
+        Relembre alguns dos nossos eventos passados e veja o impacto que causaram na comunidade.
+      </p>
+      <div id="past-events-container" class="grid grid-3">
+        <!-- Eventos passados serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+    <div class="container text-center">
+      <h2 class="section-title" style="color: var(--white);">Fique Por Dentro dos Próximos Eventos</h2>
+      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+        Inscreva-se em nossa newsletter e seja o primeiro a saber sobre novos workshops, 
+        palestras e oportunidades de aprendizado.
+      </p>
+      <div class="newsletter-form" style="max-width: 500px; margin: 0 auto;">
+        <form id="newsletter-form" style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+          <input 
+            type="email" 
+            id="newsletter-email" 
+            placeholder="Seu melhor e-mail" 
+            required
+            style="flex: 1; min-width: 250px; padding: var(--spacing-md); border: none; border-radius: var(--border-radius-md); font-size: var(--font-size-base);"
+          >
+          <button 
+            type="submit" 
+            class="btn" 
+            style="background-color: var(--white); color: var(--primary-color); white-space: nowrap;"
+          >
+            Inscrever-se
+          </button>
+        </form>
+        <p style="margin-top: var(--spacing-md); font-size: var(--font-size-sm); opacity: 0.8;">
+          Prometemos não enviar spam. Você pode cancelar a inscrição a qualquer momento.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Estilos específicos da página de eventos */
+.filter-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.event-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-date-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  z-index: 2;
+}
+
+.event-type-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.event-status {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.event-status.upcoming {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.event-status.past {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.hidden {
+  display: none !important;
+}
+</style>
+
+<script>
+// Script específico da página Eventos
+let allEvents = [];
+let currentFilter = 'all';
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Carregar todos os eventos
+  loadAllEvents();
+  
+  // Configurar formulário de newsletter
+  setupNewsletterForm();
+  
+  // Adicionar animações aos elementos
+  observeElements();
+});
+
+function loadAllEvents() {
+  // Simular carregamento de eventos (em um projeto real, viria de uma API)
+  const upcomingEvents = [
+    {
+      id: 1,
+      title: "Workshop de Desenvolvimento Web para Iniciantes",
+      date: "20 de Outubro de 2025",
+      time: "14:00 - 17:00",
+      location: "Online (Google Meet)",
+      description: "Aprenda os fundamentos do HTML, CSS e JavaScript para criar suas primeiras páginas web. Ideal para quem está começando na área de desenvolvimento.",
+      image: "public/images/eventos/evento_image_1.png",
+      type: "workshop",
+      status: "upcoming"
+    },
+    {
+      id: 2,
+      title: "Palestra: Inteligência Artificial e o Futuro do Trabalho",
+      date: "05 de Novembro de 2025",
+      time: "19:00 - 21:00",
+      location: "Auditório Principal - Instituto TechFuturo",
+      description: "Descubra como a Inteligência Artificial está moldando o mercado de trabalho e quais habilidades serão essenciais para o futuro.",
+      image: "public/images/eventos/evento_image_2.png",
+      type: "palestra",
+      status: "upcoming"
+    },
+    {
+      id: 3,
+      title: "Hackathon TechFuturo 2025",
+      date: "29 e 30 de Novembro de 2025",
+      time: "09:00 - 18:00 (ambos os dias)",
+      location: "Sede do Instituto TechFuturo",
+      description: "Maratona de programação para desenvolver soluções inovadoras para desafios sociais. Equipes multidisciplinares são bem-vindas!",
+      image: "public/images/eventos/evento_image_3.png",
+      type: "hackathon",
+      status: "upcoming"
+    }
+  ];
+
+  const pastEvents = [
+    {
+      id: 101,
+      title: "Bootcamp de Lógica de Programação",
+      date: "Julho de 2025",
+      time: "Semana intensiva",
+      location: "Instituto TechFuturo",
+      description: "Intenso bootcamp de uma semana focado em lógica de programação e algoritmos, preparando os alunos para desafios mais complexos.",
+      image: "public/images/eventos/evento_image_1.png",
+      type: "workshop",
+      status: "past"
+    },
+    {
+      id: 102,
+      title: "Feira de Profissões em TI",
+      date: "Maio de 2025",
+      time: "Dia todo",
+      location: "Centro de Convenções",
+      description: "Evento que conectou nossos alunos com empresas de tecnologia, proporcionando oportunidades de estágio e networking.",
+      image: "public/images/eventos/evento_image_2.png",
+      type: "feira",
+      status: "past"
+    }
+  ];
+
+  allEvents = [...upcomingEvents, ...pastEvents];
+  
+  // Renderizar eventos
+  renderEvents();
+}
+
+function renderEvents() {
+  const upcomingContainer = document.getElementById('upcoming-events-container');
+  const pastContainer = document.getElementById('past-events-container');
+  
+  if (!upcomingContainer || !pastContainer) return;
+  
+  // Filtrar eventos
+  const filteredEvents = filterEventsByType(allEvents, currentFilter);
+  const upcomingEvents = filteredEvents.filter(event => event.status === 'upcoming');
+  const pastEvents = filteredEvents.filter(event => event.status === 'past');
+  
+  // Renderizar eventos futuros
+  upcomingContainer.innerHTML = upcomingEvents.map(event => renderEventCard(event)).join('');
+  
+  // Renderizar eventos passados
+  pastContainer.innerHTML = pastEvents.map(event => renderEventCard(event)).join('');
+  
+  // Mostrar/ocultar seções baseado no filtro
+  const upcomingSection = document.getElementById('upcoming-events-section');
+  const pastSection = document.getElementById('past-events-section');
+  
+  if (currentFilter === 'past') {
+    upcomingSection.style.display = 'none';
+    pastSection.style.display = 'block';
+  } else if (currentFilter === 'upcoming') {
+    upcomingSection.style.display = 'block';
+    pastSection.style.display = 'none';
+  } else {
+    upcomingSection.style.display = upcomingEvents.length > 0 ? 'block' : 'none';
+    pastSection.style.display = pastEvents.length > 0 ? 'block' : 'none';
+  }
+}
+
+function renderEventCard(event) {
+  const typeLabels = {
+    workshop: 'Workshop',
+    palestra: 'Palestra',
+    hackathon: 'Hackathon',
+    feira: 'Feira'
+  };
+
+  return `
+    <div class="card event-card fade-in">
+      <div class="event-type-badge">${typeLabels[event.type] || event.type}</div>
+      <div class="event-date-badge">${event.date}</div>
+      <img src="${event.image}" alt="${event.title}" class="card-image" loading="lazy">
+      <div class="card-content">
+        <h3 class="card-title">${event.title}</h3>
+        <div class="card-meta">
+          <span>🕒 ${event.time}</span>
+          <span>📍 ${event.location}</span>
+          <span class="event-status ${event.status}">
+            ${event.status === 'upcoming' ? '📅 Próximo' : '✅ Realizado'}
+          </span>
+        </div>
+        <p class="card-description">${event.description}</p>
+        <div class="card-actions">
+          ${event.status === 'upcoming' ? 
+            `<button class="btn btn-primary" onclick="registerForEvent('${event.id}')">
+              Inscrever-se
+            </button>` :
+            `<button class="btn btn-outline" onclick="viewEventGallery('${event.id}')">
+              Ver Galeria
+            </button>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function filterEventsByType(events, filter) {
+  if (filter === 'all') return events;
+  if (filter === 'upcoming' || filter === 'past') {
+    return events.filter(event => event.status === filter);
+  }
+  return events.filter(event => event.type === filter);
+}
+
+function filterEvents(filter) {
+  currentFilter = filter;
+  
+  // Atualizar botões ativos
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+  
+  // Re-renderizar eventos
+  renderEvents();
+}
+
+function registerForEvent(eventId) {
+  // Implementar lógica de inscrição
+  alert(`Redirecionando para inscrição do evento ${eventId}...`);
+  // Aqui você implementaria a navegação para um formulário de inscrição
+}
+
+function viewEventGallery(eventId) {
+  // Implementar visualização de galeria
+  alert(`Abrindo galeria do evento ${eventId}...`);
+  // Aqui você implementaria um modal com fotos do evento
+}
+
+function setupNewsletterForm() {
+  const form = document.getElementById('newsletter-form');
+  if (!form) return;
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('newsletter-email').value;
+    
+    if (!ValidationUtils.isValidEmail(email)) {
+      alert('Por favor, insira um e-mail válido.');
+      return;
+    }
+    
+    // Simular envio
+    alert('Obrigado! Você foi inscrito em nossa newsletter.');
+    form.reset();
+  });
+}
+
+function observeElements() {
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  
+  // Observar elementos com animação
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+</script>
+
