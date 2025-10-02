@@ -72,12 +72,13 @@ class Footer {
             <!-- Contato -->
             <div class="footer-section">
               <h3>Contato</h3>
-              <p>📍 Rua da Tecnologia, 123<br>
-                 Bairro Inovação, São Paulo - SP<br>
-                 CEP: 01234-567</p>
-              <p>📞 (11) 1234-5678</p>
-              <p>✉️ contato@institutotechfuturo.org.br</p>
+              <p>📍 Rua Celso Nogueira, 500, Sala Pop Shopping Coworking<br>
+              Centro, Pacajus-CE<br> 
+              CEP: 62.870-000<br></p>
+              <p>📞 (85) 99697-4321</p>
+              <p>✉️ contato.conexaometropolitana@gmail.com</p>
               <p>🕒 Segunda a Sexta: 8h às 18h</p>
+              <p>CNPJ: 58.403.283/0001-00</p>
             </div>
           </div>
 

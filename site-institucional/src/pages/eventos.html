@@ -100,18 +100,22 @@
 .filter-btn {
   padding: var(--spacing-sm) var(--spacing-lg);
   border: 2px solid var(--primary-color);
-  background-color: transparent;
+  background-color: white;
   color: var(--primary-color);
   border-radius: var(--border-radius-md);
   font-weight: 500;
-  cursor: pointer;
+  cursor: pointer; /* Corrigido o typo "Spointer" para "pointer" */
   transition: all var(--transition-fast);
 }
 
-.filter-btn:hover,
+.filter-btn:hover {
+  background-color: #E97100;
+  color: white;
+}
+
 .filter-btn.active {
+  color: white;
   background-color: var(--primary-color);
-  color: var(--white);
 }
 
 .event-card {
@@ -124,7 +128,7 @@
   top: var(--spacing-md);
   right: var(--spacing-md);
   background-color: var(--primary-color);
-  color: var(--white);
+  color: white;
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius-md);
   font-size: var(--font-size-sm);

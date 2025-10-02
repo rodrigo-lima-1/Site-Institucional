@@ -12,6 +12,15 @@ const eventosContent = {
         image: "/public/images/eventos/evento_image_1.png"
       },
       {
+        id: 1,
+        title: "Workshop de Desenvolvimento Web para Iniciantes",
+        date: "20 de Outubro de 2025",
+        time: "14:00 - 17:00",
+        location: "Online (Google Meet)",
+        description: "Aprenda os fundamentos do HTML, CSS e JavaScript para criar suas primeiras páginas web. Ideal para quem está começando na área de desenvolvimento.",
+        image: "/public/images/eventos/evento_image_1.png"
+      },
+      {
         id: 2,
         title: "Palestra: Inteligência Artificial e o Futuro do Trabalho",
         date: "05 de Novembro de 2025",

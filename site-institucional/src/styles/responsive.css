@@ -231,10 +231,10 @@
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
   :root {
-    --white: #1f2937;
-    --light-gray: #374151;
-    --text-color: #f9fafb;
-    --dark-gray: #f9fafb;
+    --white: #ffffff;
+    --light-gray: #6b6b6b;
+    --text-color: #000000;
+    --dark-gray: #151515;
   }
   
   .header {

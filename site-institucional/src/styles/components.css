@@ -32,8 +32,6 @@
   color: var(--primary-color);
   text-decoration: none;
   padding: 4px;
-  background-color: #f4f4f5;
-  border-radius: 20px;
 }
 
 .logo-icon {
@@ -216,7 +214,7 @@
 }
 
 .card-description {
-  color: var(--white);
+  color: white;
   margin-bottom: var(--spacing-lg);
   flex-grow: 1;
 }
@@ -331,13 +329,152 @@
 
 /* ===== HERO SECTION ===== */
 .hero {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9)),
-              url('../../public/images/hero/hero_image.png') center/cover;
   color: var(--white);
   padding: 120px 0 var(--spacing-3xl) 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Carrossel de imagens de fundo */
+.hero-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-slide:nth-child(1) {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(16, 185, 129, 0.9)),
+              url('../../public/images/hero/hero_image.png') center/cover;
+}
+
+.hero-slide:nth-child(2) {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(37, 99, 235, 0.9)),
+              url('../../public/images/projetos/projeto_image_1.png') center/cover;
+}
+
+.hero-slide:nth-child(3) {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(37, 99, 235, 0.9)),
+              url('../../public/images/projetos/projeto_image_2.png') center/cover;
+}
+
+.hero-slide:nth-child(4) {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(139, 69, 19, 0.9)),
+              url('../../public/images/eventos/evento_image_1.png') center/cover;
+}
+
+/* Indicadores do carrossel */
+.hero-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 3;
+}
+
+.hero-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.hero-indicator.active {
+  background-color: var(--white);
+  transform: scale(1.2);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-indicator:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+/* Controles de navegação */
+.hero-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-nav:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.hero-nav.prev {
+  left: 30px;
+}
+
+.hero-nav.next {
+  right: 30px;
+}
+
+/* Responsividade para controles */
+@media (max-width: 768px) {
+  .hero-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .hero-nav.prev {
+    left: 15px;
+  }
+  
+  .hero-nav.next {
+    right: 15px;
+  }
+  
+  .hero-indicators {
+    bottom: 20px;
+  }
+  
+  .hero-indicator {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 .hero::before {

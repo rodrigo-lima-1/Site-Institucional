@@ -2,11 +2,31 @@
 <div class="page-content" id="home-page">
   <!-- Hero Section -->
   <section class="hero">
+    <!-- Carrossel de imagens de fundo -->
+    <div class="hero-carousel">
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    
+    <!-- Controles de navegação -->
+    <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
+    <button class="hero-nav next" onclick="changeSlide(1)">›</button>
+    
+    <!-- Indicadores -->
+    <div class="hero-indicators">
+      <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+      <div class="hero-indicator" onclick="goToSlide(1)"></div>
+      <div class="hero-indicator" onclick="goToSlide(2)"></div>
+      <div class="hero-indicator" onclick="goToSlide(3)"></div>
+    </div>
+    
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">Transformando Vidas Através da Tecnologia</h1>
+        <h1 class="hero-title">Planejar o presente para transformar o amanhã.</h1>
         <p class="hero-subtitle">
-          Capacitando jovens para o futuro digital e construindo um impacto social duradouro.
+          Sustentabilidade, inovação e equidade como pilares de uma região mais forte.
         </p>
         <div class="hero-actions">
           <a href="#" class="btn btn-primary" onclick="navigateTo('projetos')">
@@ -25,7 +45,7 @@
     <div class="container">
       <div class="grid grid-2">
         <div class="about-content slide-in-left">
-          <h2 class="section-title text-left">Sobre o Instituto TechFuturo</h2>
+          <h2 class="section-title text-left">Sobre a Conexão Metropolitana</h2>
           <p>
             O Instituto TechFuturo é uma organização sem fins lucrativos dedicada a democratizar 
             o acesso à educação tecnológica para jovens em situação de vulnerabilidade social. 
@@ -134,6 +154,9 @@
 
 <script>
 // Script específico da página Home
+let currentSlide = 0;
+let slideInterval;
+
 document.addEventListener('DOMContentLoaded', function() {
   // Carregar eventos em destaque
   loadEventsHighlight();
@@ -143,7 +166,82 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Adicionar animações aos elementos quando entrarem na viewport
   observeElements();
+  
+  // Inicializar carrossel
+  initCarousel();
 });
+
+// Funções do carrossel
+function initCarousel() {
+  // Iniciar rotação automática
+  startAutoSlide();
+  
+  // Pausar rotação quando o mouse estiver sobre o hero
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', stopAutoSlide);
+    heroSection.addEventListener('mouseleave', startAutoSlide);
+  }
+}
+
+function startAutoSlide() {
+  slideInterval = setInterval(() => {
+    changeSlide(1);
+  }, 5000); // Muda a cada 5 segundos
+}
+
+function stopAutoSlide() {
+  if (slideInterval) {
+    clearInterval(slideInterval);
+  }
+}
+
+function changeSlide(direction) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.hero-indicator');
+  
+  if (slides.length === 0) return;
+  
+  // Remove classe active do slide atual
+  slides[currentSlide].classList.remove('active');
+  indicators[currentSlide].classList.remove('active');
+  
+  // Calcula próximo slide
+  currentSlide += direction;
+  
+  // Loop infinito
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  } else if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
+  
+  // Adiciona classe active ao novo slide
+  slides[currentSlide].classList.add('active');
+  indicators[currentSlide].classList.add('active');
+}
+
+function goToSlide(slideIndex) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.hero-indicator');
+  
+  if (slideIndex < 0 || slideIndex >= slides.length) return;
+  
+  // Remove classe active do slide atual
+  slides[currentSlide].classList.remove('active');
+  indicators[currentSlide].classList.remove('active');
+  
+  // Define novo slide
+  currentSlide = slideIndex;
+  
+  // Adiciona classe active ao novo slide
+  slides[currentSlide].classList.add('active');
+  indicators[currentSlide].classList.add('active');
+  
+  // Reinicia timer automático
+  stopAutoSlide();
+  startAutoSlide();
+}
 
 function loadEventsHighlight() {
   // Simular carregamento de eventos (em um projeto real, viria de uma API)
