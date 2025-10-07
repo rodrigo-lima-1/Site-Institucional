@@ -1,0 +1,497 @@
+<!-- ASSOCIADOS PAGE -->
+<div class="page-content" id="associados-page">
+  <!-- Hero Section -->
+  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/associados/associado_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Nossos Associados</h1>
+        <p class="hero-subtitle">
+          Conheça os parceiros, apoiadores e voluntários que tornam nossa missão possível 
+          e amplificam nosso impacto na sociedade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parceiros Institucionais Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Parceiros Institucionais</h2>
+      <p class="section-subtitle">
+        Organizações que compartilham nossa visão e contribuem estrategicamente 
+        para o desenvolvimento dos nossos programas.
+      </p>
+      <div id="partners-container" class="grid grid-2">
+        <!-- Parceiros serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Empresas Apoiadoras Section -->
+  <section class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Empresas Apoiadoras</h2>
+      <p class="section-subtitle">
+        Empresas que acreditam no poder transformador da educação tecnológica 
+        e apoiam nossos projetos com recursos e oportunidades.
+      </p>
+      <div id="supporters-container" class="grid grid-2">
+        <!-- Apoiadores serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Nossos Voluntários Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Nossos Voluntários</h2>
+      <p class="section-subtitle">
+        Pessoas dedicadas que doam seu tempo e conhecimento para fazer a diferença 
+        na vida de jovens através da educação tecnológica.
+      </p>
+      <div id="volunteers-container" class="grid grid-3">
+        <!-- Voluntários serão carregados dinamicamente -->
+      </div>
+      
+      <!-- Call to Action para Voluntários -->
+      <div class="volunteer-cta" style="text-align: center; margin-top: var(--spacing-2xl); padding: var(--spacing-2xl); background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: var(--border-radius-lg); color: var(--white);">
+        <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Quer Ser um Voluntário?</h3>
+        <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+          Junte-se ao nosso time de voluntários e ajude a transformar vidas através da tecnologia. 
+          Compartilhe seu conhecimento e faça parte desta missão!
+        </p>
+        <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          Quero Ser Voluntário
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos Section -->
+  <section class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Depoimentos</h2>
+      <p class="section-subtitle">
+        Histórias inspiradoras de pessoas que foram impactadas pelos nossos programas 
+        e de parceiros que acreditam na nossa missão.
+      </p>
+      <div id="testimonials-container" class="grid grid-2">
+        <!-- Depoimentos serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios de Ser Parceiro Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Benefícios de Ser Nosso Parceiro</h2>
+      <p class="section-subtitle">
+        Descubra as vantagens de se associar ao Instituto TechFuturo e como 
+        sua organização pode contribuir para a transformação social.
+      </p>
+      
+      <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl);">
+        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+            🤝
+          </div>
+          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Responsabilidade Social</h3>
+          <p style="color: var(--medium-gray);">
+            Demonstre o compromisso da sua empresa com a responsabilidade social 
+            e o desenvolvimento da comunidade através da educação.
+          </p>
+        </div>
+        
+        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+            👥
+          </div>
+          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Acesso a Talentos</h3>
+          <p style="color: var(--medium-gray);">
+            Tenha acesso prioritário aos nossos alunos e ex-alunos, 
+            profissionais qualificados e motivados para o mercado de trabalho.
+          </p>
+        </div>
+        
+        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+            📈
+          </div>
+          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Visibilidade da Marca</h3>
+          <p style="color: var(--medium-gray);">
+            Aumente a visibilidade da sua marca associando-a a uma causa nobre 
+            e reconhecida pela comunidade e mídia.
+          </p>
+        </div>
+        
+        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+            🎯
+          </div>
+          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Networking Qualificado</h3>
+          <p style="color: var(--medium-gray);">
+            Conecte-se com outras empresas e organizações que compartilham 
+            valores similares e expandam sua rede de contatos.
+          </p>
+        </div>
+        
+        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+            💡
+          </div>
+          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Inovação Colaborativa</h3>
+          <p style="color: var(--medium-gray);">
+            Participe de projetos inovadores e contribua para o desenvolvimento 
+            de soluções tecnológicas com impacto social.
+          </p>
+        </div>
+        
+        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
+          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+            🏆
+          </div>
+          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Reconhecimento</h3>
+          <p style="color: var(--medium-gray);">
+            Receba reconhecimento público pelo seu apoio à educação e 
+            transformação social através de certificados e premiações.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Se Tornar Parceiro Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+    <div class="container">
+      <h2 class="section-title" style="color: var(--white);">Como Se Tornar Nosso Parceiro</h2>
+      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+        Existem diferentes formas de parceria. Escolha a que melhor se adequa 
+        aos objetivos e possibilidades da sua organização.
+      </p>
+      
+      <div class="partnership-types" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl);">
+        <div class="partnership-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💰</div>
+          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Apoio Financeiro</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+            Contribua financeiramente para nossos projetos e programas educacionais.
+          </p>
+          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+            Saiba Mais
+          </a>
+        </div>
+        
+        <div class="partnership-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🎁</div>
+          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Doação de Recursos</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+            Doe equipamentos, software ou outros recursos necessários para nossos cursos.
+          </p>
+          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+            Saiba Mais
+          </a>
+        </div>
+        
+        <div class="partnership-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
+          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🤝</div>
+          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Parceria Estratégica</h3>
+          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+            Desenvolva projetos conjuntos e ofereça oportunidades de estágio e emprego.
+          </p>
+          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+            Saiba Mais
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Estilos específicos da página de associados */
+.partner-logo-container {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.partner-logo {
+  max-width: 150px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.volunteer-photo-container {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+}
+
+.volunteer-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--light-gray);
+}
+
+.volunteer-role {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.testimonial-card {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary-color);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-family: serif;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: var(--spacing-lg);
+  color: var(--medium-gray);
+  font-size: var(--font-size-lg);
+}
+
+.testimonial-author {
+  border-top: 1px solid var(--light-gray);
+  padding-top: var(--spacing-md);
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--dark-gray);
+  margin-bottom: var(--spacing-xs);
+}
+
+.author-role {
+  color: var(--medium-gray);
+  font-size: var(--font-size-sm);
+}
+
+.benefit-card,
+.partnership-card {
+  transition: transform var(--transition-normal);
+}
+
+.benefit-card:hover,
+.partnership-card:hover {
+  transform: translateY(-5px);
+}
+</style>
+
+<script>
+// Script específico da página Associados
+document.addEventListener('DOMContentLoaded', function() {
+  // Carregar dados dos associados
+  loadPartners();
+  loadSupporters();
+  loadVolunteers();
+  loadTestimonials();
+  
+  // Adicionar animações aos elementos
+  observeElements();
+});
+
+function loadPartners() {
+  // Simular carregamento de parceiros (em um projeto real, viria de uma API)
+  const partners = [
+    {
+      id: 1,
+      name: "Tech Solutions S.A.",
+      logo: "public/images/associados/logo_tech_solutions.png",
+      description: "Empresa líder em soluções de software, apoia nossos programas de capacitação e oferece oportunidades de estágio para nossos alunos, contribuindo diretamente para sua inserção no mercado de trabalho."
+    },
+    {
+      id: 2,
+      name: "EducaMais",
+      logo: "public/images/associados/logo_educamais.png",
+      description: "Plataforma de educação online que disponibiliza cursos e materiais educacionais para nossos alunos, ampliando as possibilidades de aprendizado e desenvolvimento profissional."
+    }
+  ];
+  
+  const container = document.getElementById('partners-container');
+  if (container) {
+    container.innerHTML = partners.map(partner => renderPartnerCard(partner)).join('');
+  }
+}
+
+function loadSupporters() {
+  // Simular carregamento de apoiadores
+  const supporters = [
+    {
+      id: 1,
+      name: "InovaCorp",
+      logo: "public/images/associados/logo_inovacorp.png",
+      description: "Empresa de consultoria em inovação que contribui com recursos financeiros e mentoria especializada para nossos projetos, ajudando a desenvolver soluções tecnológicas inovadoras."
+    },
+    {
+      id: 2,
+      name: "Global Connect",
+      logo: "public/images/associados/logo_global_connect.png",
+      description: "Provedora de internet que oferece acesso gratuito e de alta qualidade para nossos laboratórios, garantindo que nossos alunos tenham as melhores condições para aprender."
+    }
+  ];
+  
+  const container = document.getElementById('supporters-container');
+  if (container) {
+    container.innerHTML = supporters.map(supporter => renderPartnerCard(supporter)).join('');
+  }
+}
+
+function loadVolunteers() {
+  // Simular carregamento de voluntários
+  const volunteers = [
+    {
+      id: 1,
+      name: "João Pedro",
+      photo: "public/images/associados/voluntario_joao.png",
+      role: "Mentor de Programação",
+      description: "Engenheiro de software com 8 anos de experiência que dedica seu tempo para ensinar lógica de programação e boas práticas de desenvolvimento aos nossos jovens."
+    },
+    {
+      id: 2,
+      name: "Maria Eduarda",
+      photo: "public/images/associados/voluntaria_maria.png",
+      role: "Tutora de Inglês Técnico",
+      description: "Professora de inglês especializada em vocabulário técnico que auxilia os alunos no desenvolvimento de habilidades linguísticas essenciais para a área de TI."
+    },
+    {
+      id: 3,
+      name: "Carlos Roberto",
+      photo: "public/images/associados/voluntario_joao.png",
+      role: "Mentor de Carreira",
+      description: "Gerente de RH em empresa de tecnologia que orienta nossos alunos sobre mercado de trabalho, preparação para entrevistas e desenvolvimento profissional."
+    }
+  ];
+  
+  const container = document.getElementById('volunteers-container');
+  if (container) {
+    container.innerHTML = volunteers.map(volunteer => renderVolunteerCard(volunteer)).join('');
+  }
+}
+
+function loadTestimonials() {
+  // Simular carregamento de depoimentos
+  const testimonials = [
+    {
+      id: 1,
+      name: "Pedro Henrique",
+      role: "Ex-aluno, Desenvolvedor Front-end",
+      text: "O Instituto TechFuturo mudou a minha vida. Graças aos cursos e à mentoria que recebi, consegui meu primeiro emprego na área de tecnologia e hoje trabalho em uma das maiores empresas de software do país."
+    },
+    {
+      id: 2,
+      name: "Laura Santos",
+      role: "Mãe de Aluno",
+      text: "Meu filho sempre foi apaixonado por tecnologia, mas não tínhamos condições de pagar um curso. O Instituto TechFuturo abriu as portas para ele e hoje ele está realizando o sonho de ser programador."
+    },
+    {
+      id: 3,
+      name: "Ana Carolina",
+      role: "Parceira Empresarial - Tech Solutions",
+      text: "Nossa parceria com o Instituto TechFuturo tem sido extremamente valiosa. Os jovens que contratamos através do programa demonstram não apenas competência técnica, mas também comprometimento e vontade de aprender."
+    },
+    {
+      id: 4,
+      name: "Roberto Silva",
+      role: "Voluntário há 3 anos",
+      text: "Ser voluntário no Instituto TechFuturo é uma das experiências mais gratificantes da minha vida. Ver o crescimento e a transformação dos jovens me motiva a continuar contribuindo com esta causa tão importante."
+    }
+  ];
+  
+  const container = document.getElementById('testimonials-container');
+  if (container) {
+    container.innerHTML = testimonials.map(testimonial => renderTestimonialCard(testimonial)).join('');
+  }
+}
+
+function renderPartnerCard(partner) {
+  return `
+    <div class="card fade-in">
+      <div class="partner-logo-container">
+        <img src="${partner.logo}" alt="${partner.name}" class="partner-logo" loading="lazy">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title">${partner.name}</h3>
+        <p class="card-description">${partner.description}</p>
+        <div class="card-actions">
+          <button class="btn btn-outline" onclick="contactPartner('${partner.id}')">
+            Saiba Mais
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderVolunteerCard(volunteer) {
+  return `
+    <div class="card fade-in">
+      <div class="volunteer-photo-container">
+        <img src="${volunteer.photo}" alt="${volunteer.name}" class="volunteer-photo" loading="lazy">
+      </div>
+      <div class="card-content">
+        <h3 class="card-title text-center">${volunteer.name}</h3>
+        <p class="volunteer-role">${volunteer.role}</p>
+        <p class="card-description">${volunteer.description}</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderTestimonialCard(testimonial) {
+  return `
+    <div class="testimonial-card fade-in">
+      <p class="testimonial-text">${testimonial.text}</p>
+      <div class="testimonial-author">
+        <h4 class="author-name">${testimonial.name}</h4>
+        <p class="author-role">${testimonial.role}</p>
+      </div>
+    </div>
+  `;
+}
+
+function contactPartner(partnerId) {
+  // Implementar contato com parceiro
+  alert(`Redirecionando para informações de contato do parceiro ${partnerId}...`);
+  // Aqui você implementaria navegação para página de contato específica
+}
+
+function observeElements() {
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  
+  // Observar elementos com animação
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+</script>
+

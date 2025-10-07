@@ -1,0 +1,324 @@
+<!-- HOME PAGE -->
+<div class="page-content" id="home-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Carrossel de imagens de fundo -->
+    <div class="hero-carousel">
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    
+    <!-- Controles de navegação -->
+    <button class="hero-nav prev" onclick="changeSlide(-1)">‹</button>
+    <button class="hero-nav next" onclick="changeSlide(1)">›</button>
+    
+    <!-- Indicadores -->
+    <div class="hero-indicators">
+      <div class="hero-indicator active" onclick="goToSlide(0)"></div>
+      <div class="hero-indicator" onclick="goToSlide(1)"></div>
+      <div class="hero-indicator" onclick="goToSlide(2)"></div>
+      <div class="hero-indicator" onclick="goToSlide(3)"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Planejar o presente para transformar o amanhã.</h1>
+        <p class="hero-subtitle">
+          Sustentabilidade, inovação e equidade como pilares de uma região mais forte.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary" onclick="navigateTo('projetos')">
+            Conheça Nossos Projetos
+          </a>
+          <a href="#" class="btn btn-outline" onclick="navigateTo('contatos')">
+            Entre em Contato
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre Nós Section -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="about-content slide-in-left">
+          <h2 class="section-title text-left">Sobre a Conexão Metropolitana</h2>
+          <p>
+            O Instituto TechFuturo é uma organização sem fins lucrativos dedicada a democratizar 
+            o acesso à educação tecnológica para jovens em situação de vulnerabilidade social. 
+            Acreditamos que a tecnologia é uma ferramenta poderosa para a transformação social 
+            e o desenvolvimento pessoal.
+          </p>
+          <p>
+            Desde nossa fundação em 2020, temos trabalhado incansavelmente para oferecer 
+            oportunidades de aprendizado e desenvolvimento, preparando jovens para os desafios 
+            do mercado de trabalho e para a construção de um futuro mais justo e inclusivo.
+          </p>
+          <a href="#" class="btn btn-secondary" onclick="navigateTo('quem-somos')">
+            Saiba Mais Sobre Nós
+          </a>
+        </div>
+        <div class="about-image slide-in-right">
+          <img src="public/images/hero/hero_image.png" alt="Jovens aprendendo tecnologia" 
+               style="width: 100%; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estatísticas Section -->
+  <section class="stats">
+    <div class="container">
+      <h2 class="section-title">Nosso Impacto em Números</h2>
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-value">500+</div>
+          <div class="stat-label">Jovens Capacitados</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">Projetos Concluídos</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-value">5</div>
+          <div class="stat-label">Anos de Atuação</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-value">50+</div>
+          <div class="stat-label">Parceiros</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eventos em Destaque Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Próximos Eventos</h2>
+      <p class="section-subtitle">
+        Participe dos nossos workshops, palestras e eventos para se manter atualizado 
+        com as últimas tendências em tecnologia.
+      </p>
+      <div id="events-highlight-container">
+        <!-- Eventos serão carregados dinamicamente via JavaScript -->
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline" onclick="navigateTo('eventos')">
+          Ver Todos os Eventos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos em Destaque Section -->
+  <section class="section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <p class="section-subtitle">
+        Conheça alguns dos nossos principais projetos que estão transformando 
+        vidas e comunidades através da tecnologia.
+      </p>
+      <div id="projects-highlight-container">
+        <!-- Projetos serão carregados dinamicamente via JavaScript -->
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-primary" onclick="navigateTo('projetos')">
+          Ver Todos os Projetos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+    <div class="container text-center">
+      <h2 class="section-title" style="color: var(--white);">Faça Parte da Transformação</h2>
+      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+        Junte-se a nós na missão de democratizar o acesso à educação tecnológica. 
+        Seja um voluntário, parceiro ou apoiador.
+      </p>
+      <div class="cta-actions" style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+        <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          Seja um Voluntário
+        </a>
+        <a href="#" class="btn btn-outline" style="border-color: var(--white); color: var(--white);" onclick="navigateTo('associados')">
+          Torne-se Parceiro
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Script específico da página Home
+let currentSlide = 0;
+let slideInterval;
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Carregar eventos em destaque
+  loadEventsHighlight();
+  
+  // Carregar projetos em destaque
+  loadProjectsHighlight();
+  
+  // Adicionar animações aos elementos quando entrarem na viewport
+  observeElements();
+  
+  // Inicializar carrossel
+  initCarousel();
+});
+
+// Funções do carrossel
+function initCarousel() {
+  // Iniciar rotação automática
+  startAutoSlide();
+  
+  // Pausar rotação quando o mouse estiver sobre o hero
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', stopAutoSlide);
+    heroSection.addEventListener('mouseleave', startAutoSlide);
+  }
+}
+
+function startAutoSlide() {
+  slideInterval = setInterval(() => {
+    changeSlide(1);
+  }, 5000); // Muda a cada 5 segundos
+}
+
+function stopAutoSlide() {
+  if (slideInterval) {
+    clearInterval(slideInterval);
+  }
+}
+
+function changeSlide(direction) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.hero-indicator');
+  
+  if (slides.length === 0) return;
+  
+  // Remove classe active do slide atual
+  slides[currentSlide].classList.remove('active');
+  indicators[currentSlide].classList.remove('active');
+  
+  // Calcula próximo slide
+  currentSlide += direction;
+  
+  // Loop infinito
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  } else if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
+  
+  // Adiciona classe active ao novo slide
+  slides[currentSlide].classList.add('active');
+  indicators[currentSlide].classList.add('active');
+}
+
+function goToSlide(slideIndex) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.hero-indicator');
+  
+  if (slideIndex < 0 || slideIndex >= slides.length) return;
+  
+  // Remove classe active do slide atual
+  slides[currentSlide].classList.remove('active');
+  indicators[currentSlide].classList.remove('active');
+  
+  // Define novo slide
+  currentSlide = slideIndex;
+  
+  // Adiciona classe active ao novo slide
+  slides[currentSlide].classList.add('active');
+  indicators[currentSlide].classList.add('active');
+  
+  // Reinicia timer automático
+  stopAutoSlide();
+  startAutoSlide();
+}
+
+function loadEventsHighlight() {
+  // Simular carregamento de eventos (em um projeto real, viria de uma API)
+  const events = [
+    {
+      id: 1,
+      title: "Workshop de Introdução à Programação",
+      date: "15 de Outubro de 2025",
+      time: "14:00 - 17:00",
+      location: "Online (Google Meet)",
+      description: "Aprenda os fundamentos da programação com Python em nosso workshop interativo.",
+      image: "public/images/eventos/evento_image_1.png"
+    },
+    {
+      id: 2,
+      title: "Palestra: Carreira em TI",
+      date: "22 de Novembro de 2025",
+      time: "19:00 - 21:00",
+      location: "Auditório Principal",
+      description: "Descubra as diversas oportunidades de carreira no mundo da tecnologia.",
+      image: "public/images/eventos/evento_image_2.png"
+    }
+  ];
+  
+  const container = document.getElementById('events-highlight-container');
+  if (container && window.cardComponent) {
+    container.innerHTML = window.cardComponent.renderCardGrid(events, 'event', 2);
+  }
+}
+
+function loadProjectsHighlight() {
+  // Simular carregamento de projetos (em um projeto real, viria de uma API)
+  const projects = [
+    {
+      id: 1,
+      title: "Code for Change",
+      description: "Programa de mentoria e desenvolvimento de software para soluções sociais.",
+      image: "public/images/projetos/projeto_image_1.png",
+      status: "Em Andamento",
+      tags: ["Desenvolvimento", "Impacto Social", "Meio Ambiente"]
+    },
+    {
+      id: 2,
+      title: "TechGirls",
+      description: "Iniciativa para incentivar a participação feminina na área de tecnologia.",
+      image: "public/images/projetos/projeto_image_2.png",
+      status: "Em Andamento",
+      tags: ["Inclusão", "Educação", "Mulheres na Tecnologia"]
+    }
+  ];
+  
+  const container = document.getElementById('projects-highlight-container');
+  if (container && window.cardComponent) {
+    container.innerHTML = window.cardComponent.renderCardGrid(projects, 'project', 2);
+  }
+}
+
+function observeElements() {
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  
+  // Observar elementos com animação
+  document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+</script>
+

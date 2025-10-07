@@ -1,0 +1,357 @@
+<!-- EVENTOS PAGE -->
+<div class="page-content" id="eventos-page">
+  <!-- Hero Section -->
+  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/eventos/evento_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Eventos</h1>
+        <p class="hero-subtitle">
+          Participe dos nossos workshops, palestras e eventos para se manter atualizado 
+          com as últimas tendências em tecnologia e networking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtros Section -->
+  <section class="section" style="padding: var(--spacing-xl) 0;">
+    <div class="container">
+      <div class="filters-container" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-xl);">
+        <button class="filter-btn active" data-filter="all" onclick="filterEvents('all')">
+          Todos os Eventos
+        </button>
+        <button class="filter-btn" data-filter="upcoming" onclick="filterEvents('upcoming')">
+          Próximos Eventos
+        </button>
+        <button class="filter-btn" data-filter="past" onclick="filterEvents('past')">
+          Eventos Passados
+        </button>
+        <button class="filter-btn" data-filter="workshop" onclick="filterEvents('workshop')">
+          Workshops
+        </button>
+        <button class="filter-btn" data-filter="palestra" onclick="filterEvents('palestra')">
+          Palestras
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Próximos Eventos Section -->
+  <section class="section" id="upcoming-events-section">
+    <div class="container">
+      <h2 class="section-title">Próximos Eventos</h2>
+      <p class="section-subtitle">
+        Não perca as oportunidades de aprendizado e networking que preparamos para você.
+      </p>
+      <div id="upcoming-events-container">
+        <!-- Eventos futuros serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Eventos Passados Section -->
+  <section class="section" id="past-events-section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <h2 class="section-title">Eventos Anteriores</h2>
+      <p class="section-subtitle">
+        Relembre alguns dos nossos eventos passados e veja o impacto que causaram na comunidade.
+      </p>
+      <div id="past-events-container">
+        <!-- Eventos passados serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+    <div class="container text-center">
+      <h2 class="section-title" style="color: var(--white);">Fique Por Dentro dos Próximos Eventos</h2>
+      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+        Inscreva-se em nossa newsletter e seja o primeiro a saber sobre novos workshops, 
+        palestras e oportunidades de aprendizado.
+      </p>
+      <div class="newsletter-form" style="max-width: 500px; margin: 0 auto;">
+        <form id="newsletter-form" style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+          <input 
+            type="email" 
+            id="newsletter-email" 
+            placeholder="Seu melhor e-mail" 
+            required
+            style="flex: 1; min-width: 250px; padding: var(--spacing-md); border: none; border-radius: var(--border-radius-md); font-size: var(--font-size-base);"
+          >
+          <button 
+            type="submit" 
+            class="btn" 
+            style="background-color: var(--white); color: var(--primary-color); white-space: nowrap;"
+          >
+            Inscrever-se
+          </button>
+        </form>
+        <p style="margin-top: var(--spacing-md); font-size: var(--font-size-sm); opacity: 0.8;">
+          Prometemos não enviar spam. Você pode cancelar a inscrição a qualquer momento.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Estilos específicos da página de eventos */
+.filter-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  cursor: pointer; /* Corrigido o typo "Spointer" para "pointer" */
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background-color: #E97100;
+  color: white;
+}
+
+.filter-btn.active {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.event-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-date-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  z-index: 2;
+}
+
+.event-type-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.event-status {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.event-status.upcoming {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.event-status.past {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.hidden {
+  display: none !important;
+}
+</style>
+
+<script type="module">
+//import eventosContent from '../data/eventos_content.js';
+import eventosContent from '/src/data/eventos_content.js';
+// Script específico da página Eventos
+let allEvents = [];
+let currentFilter = 'all';
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Carregar todos os eventos
+  console.log("Carregando eventos...");
+  loadAllEvents();
+  
+  // Configurar formulário de newsletter
+  console.log("Configurando formulário de newsletter...");
+  setupNewsletterForm();
+  
+  // Adicionar animações aos elementos
+  console.log("Configurando observadores de elementos...");
+  observeElements();
+});
+
+function loadAllEvents() {
+  const upcomingEvents = (eventosContent.upcomingEvents?.events || []).map(e => ({ 
+    ...e,
+    // Determinar tipo baseado no título
+    type: e.title.toLowerCase().includes('workshop') ? 'workshop' :
+          e.title.toLowerCase().includes('palestra') ? 'palestra' :
+          e.title.toLowerCase().includes('hackathon') ? 'hackathon' :
+          e.title.toLowerCase().includes('feira') ? 'feira' : 'outro',
+    status: 'upcoming'
+  }));
+
+  const pastEvents = (eventosContent.pastEvents?.events || []).map(e => ({
+    ...e,
+    type: e.title.toLowerCase().includes('bootcamp') ? 'workshop' :
+          e.title.toLowerCase().includes('feira') ? 'feira' : 'outro',
+    status: 'past'
+  }));
+
+  allEvents = [...upcomingEvents, ...pastEvents];
+  renderEvents();
+}
+
+function renderEvents() {
+  console.log('Eventos carregados:', allEvents);
+  console.log('Filtro atual:', currentFilter);
+  const upcomingContainer = document.getElementById('upcoming-events-container');
+  const pastContainer = document.getElementById('past-events-container');
+  
+  if (!upcomingContainer || !pastContainer || !window.cardComponent) return;
+
+  // Filtrar eventos
+  const filteredEvents = filterEventsByType(allEvents, currentFilter);
+  
+  // Renderizar eventos futuros
+  const upcomingEvents = filteredEvents.filter(event => event.status === 'upcoming');
+  upcomingContainer.innerHTML = window.cardComponent.renderCardGrid(upcomingEvents, 'event', 3);
+  
+  // Renderizar eventos passados
+  const pastEvents = filteredEvents.filter(event => event.status === 'past');
+  pastContainer.innerHTML = window.cardComponent.renderCardGrid(pastEvents, 'event', 3);
+
+  // Atualizar visibilidade das seções
+  document.getElementById('upcoming-events-section').classList.toggle('hidden', upcomingEvents.length === 0);
+  document.getElementById('past-events-section').classList.toggle('hidden', pastEvents.length === 0);
+}
+
+function renderEventCard(event) {
+  const typeLabels = {
+    workshop: 'Workshop',
+    palestra: 'Palestra',
+    hackathon: 'Hackathon',
+    feira: 'Feira'
+  };
+
+  return `
+    <div class="card event-card fade-in">
+      <div class="event-type-badge">${typeLabels[event.type] || event.type}</div>
+      <div class="event-date-badge">${event.date}</div>
+      <img src="${event.image}" alt="${event.title}" class="card-image" loading="lazy">
+      <div class="card-content">
+        <h3 class="card-title">${event.title}</h3>
+        <div class="card-meta">
+          <span>🕒 ${event.time}</span>
+          <span>📍 ${event.location}</span>
+          <span class="event-status ${event.status}">
+            ${event.status === 'upcoming' ? '📅 Próximo' : '✅ Realizado'}
+          </span>
+        </div>
+        <p class="card-description">${event.description}</p>
+        <div class="card-actions">
+          ${event.status === 'upcoming' ? 
+            `<button class="btn btn-primary" onclick="registerForEvent('${event.id}')">
+              Inscrever-se
+            </button>` :
+            `<button class="btn btn-outline" onclick="viewEventGallery('${event.id}')">
+              Ver Galeria
+            </button>`
+          }
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function filterEventsByType(events, filter) {
+  if (filter === 'all') return events;
+  if (filter === 'upcoming' || filter === 'past') {
+    return events.filter(event => event.status === filter);
+  }
+  return events.filter(event => event.type === filter);
+}
+
+function filterEvents(filter) {
+  currentFilter = filter;
+  
+  // Atualizar botões ativos
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+  
+  // Re-renderizar eventos
+  renderEvents();
+}
+
+function registerForEvent(eventId) {
+  // Implementar lógica de inscrição
+  alert(`Redirecionando para inscrição do evento ${eventId}...`);
+  // Aqui você implementaria a navegação para um formulário de inscrição
+}
+
+function viewEventGallery(eventId) {
+  // Implementar visualização de galeria
+  alert(`Abrindo galeria do evento ${eventId}...`);
+  // Aqui você implementaria um modal com fotos do evento
+}
+
+function setupNewsletterForm() {
+  const form = document.getElementById('newsletter-form');
+  if (!form) return;
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('newsletter-email').value;
+    
+    if (!ValidationUtils.isValidEmail(email)) {
+      alert('Por favor, insira um e-mail válido.');
+      return;
+    }
+    
+    // Simular envio
+    alert('Obrigado! Você foi inscrito em nossa newsletter.');
+    form.reset();
+  });
+}
+
+function observeElements() {
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  
+  // Observar elementos com animação
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+</script>
+
