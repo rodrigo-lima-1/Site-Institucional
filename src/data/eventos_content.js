@@ -9,25 +9,16 @@ const eventosContent = {
         time: "14:00 - 17:00",
         location: "Online (Google Meet)",
         description: "Aprenda os fundamentos do HTML, CSS e JavaScript para criar suas primeiras páginas web. Ideal para quem está começando na área de desenvolvimento.",
-        image: "/public/images/eventos/evento_image_1.png"
+  image: "public/images/eventos/evento_image_1.png"
       },
       {
-        id: 1,
-        title: "Workshop de Desenvolvimento Web para Iniciantes",
-        date: "20 de Outubro de 2025",
-        time: "14:00 - 17:00",
-        location: "Online (Google Meet)",
-        description: "Aprenda os fundamentos do HTML, CSS e JavaScript para criar suas primeiras páginas web. Ideal para quem está começando na área de desenvolvimento.",
-        image: "/public/images/eventos/evento_image_1.png"
-      },
-      {
-        id: 2,
+        id: 2, // antes estava 1 — tornar único
         title: "Funcionou",
         date: "05 de Novembro de 2025",
         time: "19:00 - 21:00",
         location: "Auditório Principal - Conexão Metropolitana",
         description: "Descubra como a Inteligência Artificial está moldando o mercado de trabalho e quais habilidades serão essenciais para o futuro. Com a participação de especialistas da área.",
-        image: "/public/images/eventos/evento_image_2.png" // Adicionar imagem correspondente
+  image: "public/images/eventos/evento_image_2.png" // Adicionar imagem correspondente
       },
       {
         id: 3,
@@ -36,7 +27,7 @@ const eventosContent = {
         time: "09:00 - 18:00 (ambos os dias)",
         location: "Sede do Conexão Metropolitana",
         description: "Maratona de programação para desenvolver soluções inovadoras para desafios sociais. Equipes multidisciplinares são bem-vindas. Grandes prêmios para os vencedores!",
-        image: "/public/images/eventos/evento_image_3.png" // Adicionar imagem correspondente
+  image: "public/images/eventos/evento_image_3.png" // Adicionar imagem correspondente
       }
     ]
   },
@@ -48,14 +39,14 @@ const eventosContent = {
         title: "Bootcamp de Lógica de Programação",
         date: "Julho de 2025",
         description: "Intenso bootcamp de uma semana focado em lógica de programação e algoritmos, preparando os alunos para desafios mais complexos.",
-        image: "/public/images/eventos/evento_image_passado_1.png" // Adicionar imagem correspondente
+        image: "public/images/eventos/evento_image_2.png"
       },
       {
         id: 102,
         title: "Feira de Profissões em TI",
         date: "Maio de 2025",
         description: "Evento que conectou nossos alunos com empresas de tecnologia, proporcionando oportunidades de estágio e networking.",
-        image: "/public/images/eventos/evento_image_passado_2.png" // Adicionar imagem correspondente
+        image: "public/images/eventos/evento_image_3.png"
       }
     ]
   }

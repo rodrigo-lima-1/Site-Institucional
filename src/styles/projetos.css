@@ -2,7 +2,7 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/projetos/projeto_image_1.png') center/cover;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('/public/images/projetos/projeto_image_1.png') center/cover;
   padding: 100px 0 var(--spacing-2xl) 0;
 }
 
@@ -53,7 +53,7 @@
 /* Impact Cards */
 .impact-card {
   text-align: center;
-  padding: var(--spacing-xl);
+  padding: 1rem;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--white);
   border-radius: var(--border-radius-lg);
@@ -69,6 +69,22 @@
   margin-bottom: var(--spacing-md);
 }
 
+.impact-card > div:nth-child(1) {
+  font-size: clamp(1.4rem, 4vw, 2.0rem);
+}
+
+.impact-card > div:nth-child(2) {
+  font-size: clamp(1.2rem, 4.2vw, 2.0rem); /* valores menores para reduzir levemente */
+  font-weight: 700;
+  margin: 0.25rem 0;
+}
+
+.impact-card > div:nth-child(3) {
+  font-size: clamp(1.0rem, 1.2vw, 1.2rem); /* tamanho menor para "Taxa de Empregabilidade", "Prêmios Recebidos", "Comunidades Atendidas" */
+  color: var(--muted-color, #ffffff);
+  line-height: 1.3;
+}
+
 .impact-card:nth-child(2) {
   background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
 }
@@ -79,6 +95,19 @@
 
 .impact-card:nth-child(4) {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+/* Ajustes adicionais para telas muito pequenas */
+@media (max-width: 420px) {
+  .impact-card {
+    padding: 0.6rem;
+  }
+  .impact-card > div:nth-child(2) {
+    font-size: 1.2rem;
+  }
+  .impact-card > div:nth-child(3) {
+    font-size: 0.8rem;
+  }
 }
 
 /* Depoimentos Section */

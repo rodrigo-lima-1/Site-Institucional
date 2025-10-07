@@ -102,21 +102,26 @@
 import eventosContent from '/src/data/eventos_content.js';
 // Script específico da página Eventos
 var allEvents = [];
-var currentFilter = 'all';
+var currentEventFilter = 'all';
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Carregar todos os eventos
-  console.log("Carregando eventos...");
+// Inicialização da página Eventos (compatível com injeção via SPA)
+function initEventosPage() {
+  console.log("Inicializando página Eventos...");
   loadAllEvents();
-  
-  // Configurar formulário de newsletter
-  console.log("Configurando formulário de newsletter...");
   setupNewsletterForm();
-  
-  // Adicionar animações aos elementos
-  console.log("Configurando observadores de elementos...");
   observeElements();
+}
+
+// Quando o fragmento for injetado pela SPA, main.js dispara 'pageContentLoaded'
+document.addEventListener('pageContentLoaded', function(e) {
+  if (!e.detail || e.detail.page !== 'eventos') return;
+  initEventosPage();
 });
+
+// Fallback: se a página foi carregada diretamente (first load), inicializa agora
+if (document.getElementById('eventos-page')) {
+  initEventosPage();
+}
 
 function loadAllEvents() {
   const upcomingEvents = (eventosContent.upcomingEvents?.events || []).map(e => ({ 
@@ -142,14 +147,14 @@ function loadAllEvents() {
 
 function renderEvents() {
   console.log('Eventos carregados:', allEvents);
-  console.log('Filtro atual:', currentFilter);
+  console.log('Filtro atual:', currentEventFilter);
   const upcomingContainer = document.getElementById('upcoming-events-container');
   const pastContainer = document.getElementById('past-events-container');
   
   if (!upcomingContainer || !pastContainer || !window.cardComponent) return;
 
   // Filtrar eventos
-  const filteredEvents = filterEventsByType(allEvents, currentFilter);
+  const filteredEvents = filterEventsByType(allEvents, currentEventFilter);
   
   // Renderizar eventos futuros
   const upcomingEvents = filteredEvents.filter(event => event.status === 'upcoming');
@@ -211,7 +216,7 @@ function filterEventsByType(events, filter) {
 }
 
 function filterEvents(filter) {
-  currentFilter = filter;
+  currentEventFilter = filter;
   
   // Atualizar botões ativos
   document.querySelectorAll('.filter-btn').forEach(btn => {

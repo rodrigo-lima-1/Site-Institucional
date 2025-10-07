@@ -5,9 +5,6 @@
 
 // Estado global da aplicação
 const AppState = {
-  // Inicialmente null para que a primeira navegação force o carregamento
-  // da página inicial. Se definido como 'home' a chamada inicial de
-  // navigateTo('home') é ignorada devido à checagem de igualdade.
   currentPage: null,
   isLoading: false,
   pages: {
@@ -25,50 +22,32 @@ const AppState = {
 document.addEventListener("DOMContentLoaded", function () {
   console.log("🚀 Conexão Metropolitana - Site carregado com sucesso!");
 
-  // Inicializar aplicação
   initializeApp();
-
-  // Configurar navegação
   setupNavigation();
-
-  // Configurar scroll to top
   setupScrollToTop();
-
-  // Configurar lazy loading de imagens
   setupLazyLoading();
-
-  // Configurar animações de scroll
   setupScrollAnimations();
 
-  // Carregar página inicial
-  let initialPage = URLUtils.getCurrentPageFromURL();
+  let initialPage = (typeof URLUtils !== 'undefined' && URLUtils.getCurrentPageFromURL) ? URLUtils.getCurrentPageFromURL() : null;
   if (!initialPage || !AppState.pages[initialPage]) {
     initialPage = "home";
-    console.log("Página inicial detectada:", initialPage); // <-- Verificação adicional
   }
   navigateTo(initialPage);
 });
 
-/**
- * Inicializa a aplicação
- */
 function initializeApp() {
-  // Adicionar classe de JavaScript habilitado
   document.documentElement.classList.add("js-enabled");
 
-  // Configurar tratamento de erros globais
   window.addEventListener("error", function (e) {
     console.error("Erro na aplicação:", e.error);
   });
 
-  // Configurar eventos de resize
   let resizeTimeout;
   window.addEventListener("resize", function () {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(handleResize, 250);
   });
 
-  // Configurar eventos de scroll
   let scrollTimeout;
   window.addEventListener("scroll", function () {
     clearTimeout(scrollTimeout);
@@ -76,11 +55,7 @@ function initializeApp() {
   });
 }
 
-/**
- * Configura a navegação SPA
- */
 function setupNavigation() {
-  // Escutar mudanças no histórico do navegador
   window.addEventListener("popstate", function (e) {
     if (e.state && e.state.page) {
       loadPage(e.state.page, false);
@@ -89,7 +64,6 @@ function setupNavigation() {
     }
   });
 
-  // Interceptar cliques em links internos
   document.addEventListener("click", function (e) {
     const link = e.target.closest('a[href^="#"]');
     if (link) {
@@ -100,11 +74,234 @@ function setupNavigation() {
   });
 }
 
-/**
- * Navega para uma página específica
- * @param {string} page - Nome da página
- * @param {boolean} updateHistory - Se deve atualizar o histórico
- */
+window.navigateTo = function (page, updateHistory = true) {
+  if (AppState.isLoading || page === AppState.currentPage) return;
+  if (!AppState.pages[page]) {
+    console.warn(`Página '${page}' não encontrada. Redirecionando para home.`);
+    page = "home";
+  }
+  loadPage(page, updateHistory);
+};
+
+async function loadPage(page, updateHistory = true) {
+  try {
+    AppState.isLoading = true;
+    showPageLoading();
+
+    const response = await fetch(AppState.pages[page]);
+    if (!response.ok) throw new Error(`Erro ao carregar página: ${response.status}`);
+
+    const content = await response.text();
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) mainContent.innerHTML = content;
+
+    AppState.currentPage = page;
+    AppState.isLoading = false;
+
+    updateActiveNavigation(page);
+    if (updateHistory && typeof URLUtils !== 'undefined') URLUtils.updateURL(page);
+
+    executePageScripts();
+    dispatchPageChangeEvent(page);
+    if (typeof ScrollUtils !== 'undefined') ScrollUtils.scrollToTop();
+    hidePageLoading();
+    setupScrollAnimations();
+  } catch (error) {
+    console.error("Erro ao carregar página:", error);
+    AppState.isLoading = false;
+    hidePageLoading();
+    showErrorMessage("Erro ao carregar a página. Tente novamente.");
+  }
+}
+
+function showPageLoading() {
+  const mainContent = document.getElementById("main-content");
+  if (mainContent && typeof LoadingUtils !== 'undefined') LoadingUtils.show(mainContent);
+}
+
+function hidePageLoading() {
+  const mainContent = document.getElementById("main-content");
+  if (mainContent && typeof LoadingUtils !== 'undefined') LoadingUtils.hide(mainContent);
+}
+
+function updateActiveNavigation(currentPage) {
+  if (window.headerComponent) window.headerComponent.updateActiveLink(currentPage);
+  if (window.navbarComponent) window.navbarComponent.updateActiveLinks(currentPage);
+}
+
+function executePageScripts() {
+  // 1) Injetar <link rel="stylesheet"> do fragmento para o <head>
+  try {
+    const links = Array.from(document.querySelectorAll('#main-content link[rel="stylesheet"]'));
+    links.forEach((oldLink) => {
+      const href = oldLink.getAttribute('href');
+      if (href && !document.querySelector(`head link[rel="stylesheet"][href="${href}"]`)) {
+        const newLink = document.createElement('link');
+        newLink.rel = 'stylesheet';
+        newLink.href = href;
+        document.head.appendChild(newLink);
+      }
+      oldLink.remove();
+    });
+  } catch (e) {
+    console.warn('Falha ao injetar stylesheets da página:', e);
+  }
+
+  // 2) Executar scripts inline e externos do conteúdo carregado
+  const scripts = Array.from(document.querySelectorAll('#main-content script'));
+  scripts.forEach((oldScript) => {
+    try {
+      const newScript = document.createElement('script');
+      if (oldScript.type) newScript.type = oldScript.type;
+      // copiar atributos (src, async, defer, type, etc)
+      for (let i = 0; i < oldScript.attributes.length; i++) {
+        const attr = oldScript.attributes[i];
+        newScript.setAttribute(attr.name, attr.value);
+      }
+
+      if (!oldScript.src) {
+        newScript.text = oldScript.textContent;
+      }
+
+      document.body.appendChild(newScript);
+      oldScript.remove();
+    } catch (error) {
+      console.error('Erro ao executar script da página:', error);
+    }
+  });
+
+  // 3) Disparar eventos compatíveis
+  const pageLoadedEvent = new CustomEvent('pageContentLoaded', { detail: { page: AppState.currentPage } });
+  document.dispatchEvent(pageLoadedEvent);
+
+  try {
+    const domContentEvent = new Event('DOMContentLoaded', { bubbles: true, cancelable: true });
+    document.dispatchEvent(domContentEvent);
+  } catch (e) {
+    // não crítico
+  }
+}
+
+function dispatchPageChangeEvent(page) {
+  const event = new CustomEvent('pageChanged', { detail: { page } });
+  document.dispatchEvent(event);
+}
+
+function setupScrollToTop() {
+  let scrollBtn = document.querySelector('.scroll-to-top');
+  if (!scrollBtn) {
+    scrollBtn = document.createElement('button');
+    scrollBtn.className = 'scroll-to-top';
+    scrollBtn.innerHTML = '↑';
+    scrollBtn.setAttribute('aria-label', 'Voltar ao topo');
+    scrollBtn.addEventListener('click', () => { if (typeof ScrollUtils !== 'undefined') ScrollUtils.scrollToTop(); });
+    document.body.appendChild(scrollBtn);
+  }
+
+  function toggleScrollButton() {
+    if (window.scrollY > 300) scrollBtn.classList.add('visible');
+    else scrollBtn.classList.remove('visible');
+  }
+
+  window.addEventListener('scroll', toggleScrollButton);
+  toggleScrollButton();
+}
+
+function setupLazyLoading() {
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src || img.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+
+    document.querySelectorAll('img[loading="lazy"]').forEach((img) => imageObserver.observe(img));
+  }
+}
+
+function setupScrollAnimations() {
+  if ('IntersectionObserver' in window) {
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          animationObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach((el) => animationObserver.observe(el));
+  }
+}
+
+function handleResize() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
+    mobileMenu.classList.remove('active');
+    if (toggle) toggle.classList.remove('active');
+  }
+  setupScrollAnimations();
+}
+
+function handleScroll() {
+  const header = document.querySelector('.header');
+  if (header) {
+    if (window.scrollY > 100) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  }
+}
+
+function showErrorMessage(message) {
+  let errorDiv = document.querySelector('.error-message');
+  if (!errorDiv) {
+    errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.style.cssText = `position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 1rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 10000; max-width: 300px;`;
+    document.body.appendChild(errorDiv);
+  }
+  errorDiv.textContent = message;
+  errorDiv.style.display = 'block';
+  setTimeout(() => { errorDiv.style.display = 'none'; }, 5000);
+}
+
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => { clearTimeout(timeout); func(...args); };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+function throttle(func, limit) {
+  let inThrottle;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+
+// Exportar funções globais
+window.AppState = AppState;
+window.debounce = debounce;
+window.throttle = throttle;
+
+console.log('✅ Sistema de navegação SPA inicializado');
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => { console.log('🔧 Service Worker disponível (não implementado nesta versão)'); });
+}
 window.navigateTo = function (page, updateHistory = true) {
   if (AppState.isLoading || page === AppState.currentPage) {
     return;

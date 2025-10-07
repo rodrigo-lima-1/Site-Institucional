@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Projetos | Conexão Metropolitana</title>
-  <link rel="stylesheet" href="../styles/projetos.css">
-  <link rel="stylesheet" href="../styles/main.css">
-  <link rel="stylesheet" href="../styles/components.css">
-  <link rel="stylesheet" href="../styles/responsive.css">
-</head>
-<body>  
 <!-- PROJETOS PAGE -->
+<link rel="stylesheet" href="src/styles/projetos.css">
+<link rel="stylesheet" href="src/styles/main.css">
+<link rel="stylesheet" href="src/styles/components.css">
+<link rel="stylesheet" href="src/styles/responsive.css">
 <div class="page-content" id="projetos-page">
   <!-- Hero Section -->
   <section class="hero">
@@ -176,9 +169,10 @@
 import projetosContent from '/src/data/projetos_content.js';
 // Script específico da página Projetos
 var allProjects = [];
-var currentFilter = 'all';
+var currentProjectFilter = 'all';
 
-document.addEventListener('DOMContentLoaded', function() {
+// Inicialização da página Projetos (compatível com injeção via SPA)
+function initProjetosPage() {
   // Carregar todos os projetos
   loadAllProjects();
 
@@ -187,7 +181,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Adicionar animações aos elementos
   observeElements();
+}
+
+// Quando o fragmento for injetado pela SPA, main.js dispara 'pageContentLoaded'
+document.addEventListener('pageContentLoaded', function(e) {
+  if (!e.detail || e.detail.page !== 'projetos') return;
+  initProjetosPage();
 });
+
+// Fallback: se a página foi carregada diretamente (first load), inicializa agora
+if (document.getElementById('projetos-page')) {
+  initProjetosPage();
+}
 
 function loadAllProjects() {
   const activeProjects = (projetosContent.activeProjects?.projects || []).map(p => ({
@@ -245,7 +250,7 @@ function renderProjects() {
   if (!activeContainer || !completedContainer) return;
   
   // Filtrar projetos
-  const filteredProjects = filterProjectsByType(allProjects, currentFilter);
+  const filteredProjects = filterProjectsByType(allProjects, currentProjectFilter);
   const activeProjects = filteredProjects.filter(project => project.status === 'active');
   const completedProjects = filteredProjects.filter(project => project.status === 'completed');
   
@@ -259,10 +264,10 @@ function renderProjects() {
   const activeSection = document.getElementById('active-projects-section');
   const completedSection = document.getElementById('completed-projects-section');
   
-  if (currentFilter === 'completed') {
+  if (currentProjectFilter === 'completed') {
     activeSection.style.display = 'none';
     completedSection.style.display = 'block';
-  } else if (currentFilter === 'active') {
+  } else if (currentProjectFilter === 'active') {
     activeSection.style.display = 'block';
     completedSection.style.display = 'none';
   } else {
@@ -328,7 +333,7 @@ function filterProjectsByType(projects, filter) {
 }
 
 function filterProjects(filter) {
-  currentFilter = filter;
+  currentProjectFilter = filter;
   
   // Atualizar botões ativos
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -360,18 +365,17 @@ function observeElements() {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
       }
-      });
-    }, {
-      threshold: 0.1
     });
-    
-    // Observar elementos com animação
-    document.querySelectorAll('.fade-in').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-  }
-  </script>
-  </body>
+  }, {
+    threshold: 0.1
+  });
+
+  // Observar elementos com animação
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+</script>
