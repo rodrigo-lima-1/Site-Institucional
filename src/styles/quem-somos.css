@@ -1,0 +1,201 @@
+/* Estilos específicos da página quem-somos */
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/hero/hero_image.png') center/cover;
+  padding: 100px 0 var(--spacing-2xl) 0;
+}
+
+/* History Image */
+.history-image img {
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Missão, Visão e Valores Section */
+#missao-visao-valores-section {
+  background-color: var(--light-gray);
+}
+
+/* Mission Cards Icons */
+.card-content > div {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-content > div > div {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  font-size: 24px;
+}
+
+.card:nth-child(2) .card-content > div > div {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+.card:nth-child(3) .card-content > div > div {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+/* Valores List */
+.card-description ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-description li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Diretoria Executiva Title */
+#diretoria-title {
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Team Photo Container */
+.team-photo-container {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+}
+
+.team-photo-container > div {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.team-photo-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card:nth-child(2) .team-photo-container > div {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+.card:nth-child(3) .team-photo-container > div {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+/* Team Role */
+.card-content p {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Conselho Fiscal Title */
+#conselho-title {
+  font-weight: bold;
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Conquistas e Reconhecimentos Section */
+#conquistas-section {
+  background-color: var(--light-gray);
+}
+
+/* Achievement Items */
+.achievement-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.achievement-item > div:first-child {
+  width: 50px;
+  height: 50px;
+  background: var(--secondary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-md);
+  color: white;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.achievement-item:nth-child(2) > div:first-child {
+  background: var(--primary-color);
+}
+
+.achievement-item:nth-child(3) > div:first-child {
+  background: var(--accent-color);
+}
+
+.achievement-item h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--dark-gray);
+}
+
+.achievement-item p {
+  color: var(--medium-gray);
+  margin: 0;
+}
+
+/* Achievements Image */
+.achievements-image img {
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Call to Action Section */
+#cta-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+}
+
+#cta-section .section-title {
+  color: var(--white);
+}
+
+#cta-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-actions {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#cta-section .btn {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+#cta-section .btn-outline {
+  border-color: var(--white);
+  color: var(--white);
+}

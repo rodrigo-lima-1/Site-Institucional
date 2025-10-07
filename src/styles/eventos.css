@@ -1,0 +1,149 @@
+/* Estilos específicos da página de eventos */
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/eventos/evento_image_1.png') center/cover;
+  padding: 100px 0 var(--spacing-2xl) 0;
+}
+
+/* Filtros Section */
+#filtros-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Botões de filtro */
+.filter-btn {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid var(--primary-color);
+  background-color: white;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background-color: #E97100;
+  color: white;
+}
+
+.filter-btn.active {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+/* Eventos Passados Section */
+#past-events-section {
+  background-color: var(--light-gray);
+}
+
+/* Newsletter Section */
+#newsletter-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+}
+
+#newsletter-section .section-title {
+  color: var(--white);
+}
+
+#newsletter-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.newsletter-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#newsletter-form {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+#newsletter-email {
+  flex: 1;
+  min-width: 250px;
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+}
+
+#newsletter-section .btn {
+  background-color: var(--white);
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+#newsletter-section p {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+/* Event Card Styles */
+.event-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-date-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  z-index: 2;
+}
+
+.event-type-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.event-status {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.event-status.upcoming {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.event-status.past {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.hidden {
+  display: none !important;
+}

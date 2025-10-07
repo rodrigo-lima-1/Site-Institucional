@@ -1,0 +1,210 @@
+/* Estilos específicos da página de contatos */
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/hero/hero_image.png') center/cover;
+  padding: 100px 0 var(--spacing-2xl) 0;
+}
+
+/* Contact Info Cards */
+.contact-info-card {
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-info-card h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-info-card p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Mapa e Localização Section */
+#map-section {
+  background-color: var(--light-gray);
+}
+
+.map-container {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map-container > div {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--medium-gray);
+  text-align: center;
+}
+
+.map-container .map-placeholder div {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.map-container .map-placeholder p {
+  font-size: var(--font-size-sm);
+}
+
+/* Transport Options */
+.transport-info h3 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--dark-gray);
+}
+
+.transport-option {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.transport-option h4 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.transport-option:last-child {
+  margin-bottom: 0;
+}
+
+/* FAQ Section */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: var(--spacing-lg);
+  background: var(--white);
+  border: none;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background-color: var(--light-gray) !important;
+}
+
+.faq-question.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: var(--spacing-lg);
+  background: var(--light-gray);
+}
+
+/* Redes Sociais Section */
+#social-section {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+}
+
+#social-section .section-title {
+  color: var(--white);
+}
+
+#social-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.social-links-large {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+  flex-wrap: wrap;
+}
+
+.social-link-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--white);
+  transition: transform var(--transition-normal);
+}
+
+.social-link-large:hover {
+  transform: translateY(-5px);
+}
+
+.social-link-large > div {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 2rem;
+}
+
+.social-link-large:hover > div {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.social-link-large span {
+  font-weight: 500;
+}
+
+/* Contact Form */
+.contact-form {
+  background: var(--white);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Checkbox Label */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: var(--spacing-sm);
+  margin-top: 2px;
+}
+
+/* Button Loading */
+.btn-loading {
+  display: none;
+}
+
+.btn.loading .btn-text {
+  display: none;
+}
+
+.btn.loading .btn-loading {
+  display: inline;
+}

@@ -1,4 +1,4 @@
-# 🚀 Instruções de Uso - Site Instituto TechFuturo
+# 🚀 Instruções de Uso - Site Conexão Metropolitana
 
 ## ⚡ Início Rápido
 
@@ -55,7 +55,7 @@ public/images/
 ## 🔧 Customizações Rápidas
 
 ### **Mudar Nome da Instituição**
-1. Procure por "Instituto TechFuturo" nos arquivos
+1. Procure por "Conexão Metropolitana" nos arquivos
 2. Substitua pelo nome desejado
 3. Atualize o logo em `src/components/header.js`
 

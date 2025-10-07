@@ -496,6 +496,7 @@
 }
 
 .hero-title {
+  padding-top: 50px;
   font-size: var(--font-size-5xl);
   font-weight: 700;
   margin-bottom: var(--spacing-lg);

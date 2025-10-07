@@ -1,7 +1,8 @@
 <!-- EVENTOS PAGE -->
+<link rel="stylesheet" href="src/styles/eventos.css">
 <div class="page-content" id="eventos-page">
   <!-- Hero Section -->
-  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/eventos/evento_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+  <section class="hero">
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">Eventos</h1>
@@ -14,9 +15,9 @@
   </section>
 
   <!-- Filtros Section -->
-  <section class="section" style="padding: var(--spacing-xl) 0;">
+  <section class="section" id="filtros-section">
     <div class="container">
-      <div class="filters-container" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-xl);">
+      <div class="filters-container">
         <button class="filter-btn active" data-filter="all" onclick="filterEvents('all')">
           Todos os Eventos
         </button>
@@ -37,6 +38,7 @@
   </section>
 
   <!-- Próximos Eventos Section -->
+  <!--Corrigido aqui-->
   <section class="section" id="upcoming-events-section">
     <div class="container">
       <h2 class="section-title">Próximos Eventos</h2>
@@ -47,10 +49,10 @@
         <!-- Eventos futuros serão carregados dinamicamente -->
       </div>
     </div>
-  </section>
+  </section> 
 
   <!-- Eventos Passados Section -->
-  <section class="section" id="past-events-section" style="background-color: var(--light-gray);">
+  <section class="section" id="past-events-section">
     <div class="container">
       <h2 class="section-title">Eventos Anteriores</h2>
       <p class="section-subtitle">
@@ -63,31 +65,29 @@
   </section>
 
   <!-- Newsletter Section -->
-  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+  <section class="section" id="newsletter-section">
     <div class="container text-center">
-      <h2 class="section-title" style="color: var(--white);">Fique Por Dentro dos Próximos Eventos</h2>
-      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
-        Inscreva-se em nossa newsletter e seja o primeiro a saber sobre novos workshops, 
+      <h2 class="section-title">Fique Por Dentro dos Próximos Eventos</h2>
+      <p class="section-subtitle">
+        Inscreva-se em nossa newsletter e seja o primeiro a saber sobre novos workshops,
         palestras e oportunidades de aprendizado.
       </p>
-      <div class="newsletter-form" style="max-width: 500px; margin: 0 auto;">
-        <form id="newsletter-form" style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
-          <input 
-            type="email" 
-            id="newsletter-email" 
-            placeholder="Seu melhor e-mail" 
+      <div class="newsletter-form">
+        <form id="newsletter-form">
+          <input
+            type="email"
+            id="newsletter-email"
+            placeholder="Seu melhor e-mail"
             required
-            style="flex: 1; min-width: 250px; padding: var(--spacing-md); border: none; border-radius: var(--border-radius-md); font-size: var(--font-size-base);"
           >
-          <button 
-            type="submit" 
-            class="btn" 
-            style="background-color: var(--white); color: var(--primary-color); white-space: nowrap;"
+          <button
+            type="submit"
+            class="btn"
           >
             Inscrever-se
           </button>
         </form>
-        <p style="margin-top: var(--spacing-md); font-size: var(--font-size-sm); opacity: 0.8;">
+        <p>
           Prometemos não enviar spam. Você pode cancelar a inscrição a qualquer momento.
         </p>
       </div>
@@ -95,91 +95,14 @@
   </section>
 </div>
 
-<style>
-/* Estilos específicos da página de eventos */
-.filter-btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: 2px solid var(--primary-color);
-  background-color: white;
-  color: var(--primary-color);
-  border-radius: var(--border-radius-md);
-  font-weight: 500;
-  cursor: pointer; /* Corrigido o typo "Spointer" para "pointer" */
-  transition: all var(--transition-fast);
-}
 
-.filter-btn:hover {
-  background-color: #E97100;
-  color: white;
-}
-
-.filter-btn.active {
-  color: white;
-  background-color: var(--primary-color);
-}
-
-.event-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.event-date-badge {
-  position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
-  background-color: var(--primary-color);
-  color: white;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  z-index: 2;
-}
-
-.event-type-badge {
-  position: absolute;
-  top: var(--spacing-md);
-  left: var(--spacing-md);
-  background-color: var(--secondary-color);
-  color: var(--white);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  z-index: 2;
-}
-
-.event-status {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.event-status.upcoming {
-  background-color: #dbeafe;
-  color: #1e40af;
-}
-
-.event-status.past {
-  background-color: #f3f4f6;
-  color: #6b7280;
-}
-
-.hidden {
-  display: none !important;
-}
-</style>
 
 <script type="module">
 //import eventosContent from '../data/eventos_content.js';
 import eventosContent from '/src/data/eventos_content.js';
 // Script específico da página Eventos
-let allEvents = [];
-let currentFilter = 'all';
+var allEvents = [];
+var currentFilter = 'all';
 
 document.addEventListener('DOMContentLoaded', function() {
   // Carregar todos os eventos

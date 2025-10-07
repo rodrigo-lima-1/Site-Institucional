@@ -62,7 +62,8 @@ class Navbar {
       { page: 'eventos', label: 'Eventos' },
       { page: 'projetos', label: 'Projetos' },
       { page: 'associados', label: 'Associados' },
-      { page: 'contatos', label: 'Contatos' }
+      { page: 'contatos', label: 'Contatos' },
+      { page: 'jornal-digital', label: 'Jornal Digital' }
     ];
   }
 
@@ -74,7 +75,8 @@ class Navbar {
       'eventos': 'Eventos',
       'projetos': 'Projetos',
       'associados': 'Associados',
-      'contatos': 'Contatos'
+      'contatos': 'Contatos',
+      'jornal-digital': 'Jornal Digital'
     };
 
     return `

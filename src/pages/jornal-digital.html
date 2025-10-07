@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jornal Digital | Conexão Metropolitana</title>
+  <link rel="stylesheet" href="../styles/jornal-digital.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+</head>
+<body>
+<!-- JORNAL DIGITAL PAGE -->
+<div class="page-content" id="jornal-digital-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Jornal Digital</h1><h1 style="color:red">- EM DESENVOLVIMENTO</h1>
+        <p class="hero-subtitle">
+          Acompanhe as últimas notícias e atualizações da nossa comunidade através do nosso jornal digital.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arquivos Section -->
+  <section class="section" id="arquivos-section">
+    <div class="container">
+      <h2 class="section-title">Edições Disponíveis</h2>
+      <p class="section-subtitle">
+        Baixe as edições do nosso jornal digital e fique por dentro de todas as novidades.
+      </p>
+      <div id="arquivos-container" class="grid grid-3">
+        <!-- Arquivos PDF serão carregados dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre o Jornal Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Sobre o Jornal Digital</h2>
+      <p class="section-subtitle">
+        Nosso jornal digital é uma publicação mensal que traz notícias, artigos e reportagens sobre
+        tecnologia, educação e impacto social na nossa comunidade.
+      </p>
+
+      <div class="jornal-info">
+        <div class="info-card">
+          <div>📅</div>
+          <h3>Publicação Mensal</h3>
+          <p>Uma nova edição todo mês com conteúdo exclusivo.</p>
+        </div>
+
+        <div class="info-card">
+          <div>📄</div>
+          <h3>Conteúdo Diverso</h3>
+          <p>Notícias, entrevistas, artigos técnicos e muito mais.</p>
+        </div>
+
+        <div class="info-card">
+          <div>⬇️</div>
+          <h3>Download Gratuito</h3>
+          <p>Acesso livre a todas as edições anteriores.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="module">
+import jornalContent from '../data/jornal_content.js';
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadArquivos();
+
+  // Adicionar animações aos elementos
+  observeElements();
+});
+
+function loadArquivos() {
+  const container = document.getElementById('arquivos-container');
+  if (container && jornalContent.arquivos) {
+    container.innerHTML = jornalContent.arquivos.map(arquivo => renderArquivoCard(arquivo)).join('');
+  }
+}
+
+function renderArquivoCard(arquivo) {
+  return `
+    <div class="card fade-in">
+      <div class="card-content">
+        <h3 class="card-title">${arquivo.titulo}</h3>
+        <div class="arquivo-meta">
+          <span>📅 ${arquivo.data}</span>
+          <span>📄 Edição ${arquivo.edicao}</span>
+          <span>💾 ${arquivo.tamanho}</span>
+        </div>
+        <p class="card-description">${arquivo.descricao}</p>
+        <div class="card-actions">
+          <a href="${arquivo.link}" class="btn btn-primary" download>
+            📥 Baixar PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function observeElements() {
+  // Intersection Observer para animações
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // Observar elementos com animação
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+}
+</script>
+</body>
+</html>

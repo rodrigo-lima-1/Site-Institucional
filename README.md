@@ -1,8 +1,8 @@
-# Instituto TechFuturo - Site Institucional
+# Conexão Metropolitana - Site Institucional
 
 ## 📋 Descrição do Projeto
 
-Este é um site institucional completo desenvolvido para o Instituto TechFuturo, uma organização fictícia dedicada à democratização do acesso à educação tecnológica. O projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento web, com foco em design responsivo, código limpo e estrutura modular.
+Este é um site institucional completo desenvolvido para o Conexão Metropolitana, uma organização fictícia dedicada à democratização do acesso à educação tecnológica.
 
 ## 🎯 Características Principais
 

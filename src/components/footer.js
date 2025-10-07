@@ -23,7 +23,7 @@ class Footer {
           <div class="footer-content">
             <!-- Seção Sobre -->
             <div class="footer-section">
-              <h3>Instituto TechFuturo</h3>
+              <h3>Conexão Metropolitana</h3>
               <p>
                 Democratizando o acesso à educação tecnológica para jovens em situação de 
                 vulnerabilidade social, construindo um futuro mais justo e inclusivo através da tecnologia.
@@ -84,7 +84,7 @@ class Footer {
 
           <!-- Rodapé Inferior -->
           <div class="footer-bottom">
-            <p>&copy; ${new Date().getFullYear()} Instituto TechFuturo. Todos os direitos reservados.</p>
+            <p>&copy; ${new Date().getFullYear()} Conexão Metropolitana. Todos os direitos reservados.</p>
             <p>Desenvolvido com ❤️ para transformar vidas através da tecnologia.</p>
           </div>
         </div>

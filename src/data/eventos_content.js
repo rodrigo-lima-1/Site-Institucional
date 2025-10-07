@@ -25,7 +25,7 @@ const eventosContent = {
         title: "Funcionou",
         date: "05 de Novembro de 2025",
         time: "19:00 - 21:00",
-        location: "Auditório Principal - Instituto TechFuturo",
+        location: "Auditório Principal - Conexão Metropolitana",
         description: "Descubra como a Inteligência Artificial está moldando o mercado de trabalho e quais habilidades serão essenciais para o futuro. Com a participação de especialistas da área.",
         image: "/public/images/eventos/evento_image_2.png" // Adicionar imagem correspondente
       },
@@ -34,7 +34,7 @@ const eventosContent = {
         title: "Hackathon TechFuturo 2025",
         date: "29 e 30 de Novembro de 2025",
         time: "09:00 - 18:00 (ambos os dias)",
-        location: "Sede do Instituto TechFuturo",
+        location: "Sede do Conexão Metropolitana",
         description: "Maratona de programação para desenvolver soluções inovadoras para desafios sociais. Equipes multidisciplinares são bem-vindas. Grandes prêmios para os vencedores!",
         image: "/public/images/eventos/evento_image_3.png" // Adicionar imagem correspondente
       }
