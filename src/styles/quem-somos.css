@@ -15,7 +15,35 @@
 
 /* Missão, Visão e Valores Section */
 #missao-visao-valores-section {
-  background-color: var(--light-gray);
+  /* Gradiente verde parecido com o exemplo fornecido */
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  color: #ffffff;
+}
+
+/* Tornar os cards dessa seção com fundo esverdeado (sobrepor o style global de .card) */
+#missao-visao-valores-section .card {
+  /* leve tint verde translúcido para integrar com o fundo */
+  background: linear-gradient(135deg, rgba(29, 228, 155, 0.795), rgba(3, 243, 167, 0.37)) !important;
+  /* suavizar sombra para ficar mais sutil sobre o gradiente */
+  box-shadow: 0 6px 20px rgba(1, 95, 59, 0.596) !important;
+  border: 1px solid rgba(2, 68, 32, 0.63) !important;
+}
+
+/* Garantir que títulos e descrições fiquem legíveis em branco */
+#missao-visao-valores-section .card .card-title,
+#missao-visao-valores-section .card .card-description,
+#missao-visao-valores-section .card .card-description li {
+  color: #ffffff !important;
+}
+
+/* Tornar o texto das descrições de Missão e Visão brancas (mantém Valores com estilo próprio) */
+/* Forçar cor branca para qualquer texto dentro dos cards desta seção (maior especificidade) */
+#missao-visao-valores-section .card-content p,
+#missao-visao-valores-section .card-description p,
+#missao-visao-valores-section .card-title,
+#missao-visao-valores-section .card-description ul,
+#missao-visao-valores-section .card-description li {
+  color: #ffffff !important;
 }
 
 /* Mission Cards Icons */
