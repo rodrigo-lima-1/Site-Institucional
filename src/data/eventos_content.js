@@ -18,7 +18,7 @@ const eventosContent = {
         time: "19:00 - 21:00",
         location: "Auditório Principal - Conexão Metropolitana",
         description: "Descubra como a Inteligência Artificial está moldando o mercado de trabalho e quais habilidades serão essenciais para o futuro. Com a participação de especialistas da área.",
-  image: "public/images/eventos/evento_image_2.png" // Adicionar imagem correspondente
+  image: "/public/images/eventos/evento_image_2.png" // Adicionar imagem correspondente
       },
       {
         id: 3,
@@ -39,7 +39,7 @@ const eventosContent = {
         title: "Bootcamp de Lógica de Programação",
         date: "Julho de 2025",
         description: "Intenso bootcamp de uma semana focado em lógica de programação e algoritmos, preparando os alunos para desafios mais complexos.",
-        image: "public/images/eventos/evento_image_2.png"
+        image: "/public/images/eventos/evento_image_2.png"
       },
       {
         id: 102,
