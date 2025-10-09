@@ -1,0 +1,197 @@
+/* JORNAL DIGITAL PAGE STYLES */
+
+#jornal-digital-page .hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+#jornal-digital-page .hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#jornal-digital-page .hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Arquivos Section */
+#arquivos-section {
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+#arquivos-section .section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#arquivos-section .section-subtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #666;
+}
+
+#arquivos-container {
+  gap: 2rem;
+}
+
+#arquivos-container .card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#arquivos-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+#arquivos-container .card-content {
+  padding: 2rem;
+}
+
+#arquivos-container .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.arquivo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.arquivo-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#arquivos-container .card-description {
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+#arquivos-container .card-actions {
+  text-align: center;
+}
+
+#arquivos-container .card-actions .btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Sobre o Jornal Section */
+#jornal-digital-page .section:nth-child(3) {
+  padding: 4rem 0;
+  background: white;
+}
+
+#jornal-digital-page .section:nth-child(3) .section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#jornal-digital-page .section:nth-child(3) .section-subtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #666;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jornal-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.info-card {
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-card div:first-child {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.info-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #jornal-digital-page .hero-title {
+    font-size: 2.5rem;
+  }
+
+  #jornal-digital-page .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  #arquivos-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  #arquivos-container .card-content {
+    padding: 1.5rem;
+  }
+
+  .arquivo-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .jornal-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #jornal-digital-page .hero {
+    padding: 3rem 0;
+  }
+
+  #jornal-digital-page .hero-title {
+    font-size: 2rem;
+  }
+
+  #arquivos-section,
+  #jornal-digital-page .section:nth-child(3) {
+    padding: 3rem 0;
+  }
+}

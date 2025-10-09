@@ -25,7 +25,7 @@ class Header {
           <div class="header-content">
             <!-- Logo -->
             <a href="#" class="logo" onclick="navigateTo('home')">
-              <img src="public/icons/logo conexao.png" alt="Logo Conexão" width="338" height="69"/>
+              <img src="public/icons/logo conexao.png" alt="Logo Conexão" width="145px" height="86px"/>
             </a>
 
             <!-- Desktop Navigation -->
@@ -42,7 +42,7 @@ class Header {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="btn btn-primary nav-link" data-page="eventos" onclick="navigateTo('eventos')">
+                  <a href="#" class="btn btn-primary nav-link" data-page="ações" onclick="navigateTo('eventos')">
                     Eventos
                   </a>
                 </li>
@@ -59,6 +59,11 @@ class Header {
                 <li class="nav-item">
                   <a href="#" class="btn btn-primary nav-link" data-page="contatos" onclick="navigateTo('contatos')">
                     Contatos
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="btn btn-primary nav-link" data-page="jornal-digital" onclick="navigateTo('jornal-digital')">
+                    Jornal Digital
                   </a>
                 </li>
               </ul>
@@ -103,6 +108,11 @@ class Header {
               <li class="mobile-nav-item">
                 <a href="#" class="mobile-nav-link" data-page="contatos" onclick="navigateTo('contatos'); closeMobileMenu();">
                   Contatos
+                </a>
+              </li>
+              <li class="mobile-nav-item">
+                <a href="#" class="mobile-nav-link" data-page="jornal-digital" onclick="navigateTo('jornal-digital'); closeMobileMenu();">
+                  Jornal Digital
                 </a>
               </li>
             </ul>

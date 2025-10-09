@@ -1,7 +1,8 @@
 <!-- ASSOCIADOS PAGE -->
+<link rel="stylesheet" href="../styles/associados.css">
 <div class="page-content" id="associados-page">
   <!-- Hero Section -->
-  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/associados/associado_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+  <section class="hero">
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">Nossos Associados</h1>
@@ -28,7 +29,7 @@
   </section>
 
   <!-- Empresas Apoiadoras Section -->
-  <section class="section" style="background-color: var(--light-gray);">
+  <section class="section" id="empresas-apoiadoras-section">
     <div class="container">
       <h2 class="section-title">Empresas Apoiadoras</h2>
       <p class="section-subtitle">
@@ -54,13 +55,13 @@
       </div>
       
       <!-- Call to Action para Voluntários -->
-      <div class="volunteer-cta" style="text-align: center; margin-top: var(--spacing-2xl); padding: var(--spacing-2xl); background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: var(--border-radius-lg); color: var(--white);">
-        <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Quer Ser um Voluntário?</h3>
-        <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
-          Junte-se ao nosso time de voluntários e ajude a transformar vidas através da tecnologia. 
+      <div class="volunteer-cta">
+        <h3>Quer Ser um Voluntário?</h3>
+        <p>
+          Junte-se ao nosso time de voluntários e ajude a transformar vidas através da tecnologia.
           Compartilhe seu conhecimento e faça parte desta missão!
         </p>
-        <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+        <a href="#" class="btn" onclick="navigateTo('contatos')">
           Quero Ser Voluntário
         </a>
       </div>
@@ -68,7 +69,7 @@
   </section>
 
   <!-- Depoimentos Section -->
-  <section class="section" style="background-color: var(--light-gray);">
+  <section class="section" id="depoimentos-section">
     <div class="container">
       <h2 class="section-title">Depoimentos</h2>
       <p class="section-subtitle">
@@ -86,73 +87,73 @@
     <div class="container">
       <h2 class="section-title">Benefícios de Ser Nosso Parceiro</h2>
       <p class="section-subtitle">
-        Descubra as vantagens de se associar ao Instituto TechFuturo e como 
+        Descubra as vantagens de se associar ao Conexão Metropolitana e como
         sua organização pode contribuir para a transformação social.
       </p>
       
-      <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl);">
-        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
-          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div>
             🤝
           </div>
-          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Responsabilidade Social</h3>
-          <p style="color: var(--medium-gray);">
-            Demonstre o compromisso da sua empresa com a responsabilidade social 
+          <h3>Responsabilidade Social</h3>
+          <p>
+            Demonstre o compromisso da sua empresa com a responsabilidade social
             e o desenvolvimento da comunidade através da educação.
           </p>
         </div>
-        
-        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
-          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+
+        <div class="benefit-card">
+          <div>
             👥
           </div>
-          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Acesso a Talentos</h3>
-          <p style="color: var(--medium-gray);">
-            Tenha acesso prioritário aos nossos alunos e ex-alunos, 
+          <h3>Acesso a Talentos</h3>
+          <p>
+            Tenha acesso prioritário aos nossos alunos e ex-alunos,
             profissionais qualificados e motivados para o mercado de trabalho.
           </p>
         </div>
-        
-        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
-          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+
+        <div class="benefit-card">
+          <div>
             📈
           </div>
-          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Visibilidade da Marca</h3>
-          <p style="color: var(--medium-gray);">
-            Aumente a visibilidade da sua marca associando-a a uma causa nobre 
+          <h3>Visibilidade da Marca</h3>
+          <p>
+            Aumente a visibilidade da sua marca associando-a a uma causa nobre
             e reconhecida pela comunidade e mídia.
           </p>
         </div>
-        
-        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
-          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+
+        <div class="benefit-card">
+          <div>
             🎯
           </div>
-          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Networking Qualificado</h3>
-          <p style="color: var(--medium-gray);">
-            Conecte-se com outras empresas e organizações que compartilham 
+          <h3>Networking Qualificado</h3>
+          <p>
+            Conecte-se com outras empresas e organizações que compartilham
             valores similares e expandam sua rede de contatos.
           </p>
         </div>
-        
-        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
-          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+
+        <div class="benefit-card">
+          <div>
             💡
           </div>
-          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Inovação Colaborativa</h3>
-          <p style="color: var(--medium-gray);">
-            Participe de projetos inovadores e contribua para o desenvolvimento 
+          <h3>Inovação Colaborativa</h3>
+          <p>
+            Participe de projetos inovadores e contribua para o desenvolvimento
             de soluções tecnológicas com impacto social.
           </p>
         </div>
-        
-        <div class="benefit-card" style="padding: var(--spacing-xl); background: var(--white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-md); text-align: center;">
-          <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--accent-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg); color: white; font-size: 2rem;">
+
+        <div class="benefit-card">
+          <div>
             🏆
           </div>
-          <h3 style="margin-bottom: var(--spacing-md); color: var(--dark-gray);">Reconhecimento</h3>
-          <p style="color: var(--medium-gray);">
-            Receba reconhecimento público pelo seu apoio à educação e 
+          <h3>Reconhecimento</h3>
+          <p>
+            Receba reconhecimento público pelo seu apoio à educação e
             transformação social através de certificados e premiações.
           </p>
         </div>
@@ -161,44 +162,44 @@
   </section>
 
   <!-- Como Se Tornar Parceiro Section -->
-  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+  <section class="section" id="partnership-section">
     <div class="container">
-      <h2 class="section-title" style="color: var(--white);">Como Se Tornar Nosso Parceiro</h2>
-      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
-        Existem diferentes formas de parceria. Escolha a que melhor se adequa 
+      <h2 class="section-title">Como Se Tornar Nosso Parceiro</h2>
+      <p class="section-subtitle">
+        Existem diferentes formas de parceria. Escolha a que melhor se adequa
         aos objetivos e possibilidades da sua organização.
       </p>
-      
-      <div class="partnership-types" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl);">
-        <div class="partnership-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💰</div>
-          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Apoio Financeiro</h3>
-          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+
+      <div class="partnership-types">
+        <div class="partnership-card">
+          <div>💰</div>
+          <h3>Apoio Financeiro</h3>
+          <p>
             Contribua financeiramente para nossos projetos e programas educacionais.
           </p>
-          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          <a href="#" class="btn" onclick="navigateTo('contatos')">
             Saiba Mais
           </a>
         </div>
-        
-        <div class="partnership-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🎁</div>
-          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Doação de Recursos</h3>
-          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+
+        <div class="partnership-card">
+          <div>🎁</div>
+          <h3>Doação de Recursos</h3>
+          <p>
             Doe equipamentos, software ou outros recursos necessários para nossos cursos.
           </p>
-          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          <a href="#" class="btn" onclick="navigateTo('contatos')">
             Saiba Mais
           </a>
         </div>
-        
-        <div class="partnership-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🤝</div>
-          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Parceria Estratégica</h3>
-          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+
+        <div class="partnership-card">
+          <div>🤝</div>
+          <h3>Parceria Estratégica</h3>
+          <p>
             Desenvolva projetos conjuntos e ofereça oportunidades de estágio e emprego.
           </p>
-          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          <a href="#" class="btn" onclick="navigateTo('contatos')">
             Saiba Mais
           </a>
         </div>
@@ -207,92 +208,6 @@
   </section>
 </div>
 
-<style>
-/* Estilos específicos da página de associados */
-.partner-logo-container {
-  text-align: center;
-  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
-  background-color: var(--light-gray);
-  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
-}
-
-.partner-logo {
-  max-width: 150px;
-  max-height: 80px;
-  object-fit: contain;
-}
-
-.volunteer-photo-container {
-  text-align: center;
-  padding: var(--spacing-lg) var(--spacing-lg) 0;
-}
-
-.volunteer-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--light-gray);
-}
-
-.volunteer-role {
-  color: var(--primary-color);
-  font-weight: 500;
-  margin-bottom: var(--spacing-md);
-  text-align: center;
-}
-
-.testimonial-card {
-  background: var(--white);
-  padding: var(--spacing-xl);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  position: relative;
-}
-
-.testimonial-card::before {
-  content: '"';
-  font-size: 4rem;
-  color: var(--primary-color);
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  font-family: serif;
-}
-
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: var(--spacing-lg);
-  color: var(--medium-gray);
-  font-size: var(--font-size-lg);
-}
-
-.testimonial-author {
-  border-top: 1px solid var(--light-gray);
-  padding-top: var(--spacing-md);
-}
-
-.author-name {
-  font-weight: 600;
-  color: var(--dark-gray);
-  margin-bottom: var(--spacing-xs);
-}
-
-.author-role {
-  color: var(--medium-gray);
-  font-size: var(--font-size-sm);
-}
-
-.benefit-card,
-.partnership-card {
-  transition: transform var(--transition-normal);
-}
-
-.benefit-card:hover,
-.partnership-card:hover {
-  transform: translateY(-5px);
-}
-</style>
 
 <script>
 // Script específico da página Associados
@@ -392,25 +307,25 @@ function loadTestimonials() {
       id: 1,
       name: "Pedro Henrique",
       role: "Ex-aluno, Desenvolvedor Front-end",
-      text: "O Instituto TechFuturo mudou a minha vida. Graças aos cursos e à mentoria que recebi, consegui meu primeiro emprego na área de tecnologia e hoje trabalho em uma das maiores empresas de software do país."
+      text: "O Conexão Metropolitana mudou a minha vida. Graças aos cursos e à mentoria que recebi, consegui meu primeiro emprego na área de tecnologia e hoje trabalho em uma das maiores empresas de software do país."
     },
     {
       id: 2,
       name: "Laura Santos",
       role: "Mãe de Aluno",
-      text: "Meu filho sempre foi apaixonado por tecnologia, mas não tínhamos condições de pagar um curso. O Instituto TechFuturo abriu as portas para ele e hoje ele está realizando o sonho de ser programador."
+      text: "Meu filho sempre foi apaixonado por tecnologia, mas não tínhamos condições de pagar um curso. O Conexão Metropolitana abriu as portas para ele e hoje ele está realizando o sonho de ser programador."
     },
     {
       id: 3,
       name: "Ana Carolina",
       role: "Parceira Empresarial - Tech Solutions",
-      text: "Nossa parceria com o Instituto TechFuturo tem sido extremamente valiosa. Os jovens que contratamos através do programa demonstram não apenas competência técnica, mas também comprometimento e vontade de aprender."
+      text: "Nossa parceria com o Conexão Metropolitana tem sido extremamente valiosa. Os jovens que contratamos através do programa demonstram não apenas competência técnica, mas também comprometimento e vontade de aprender."
     },
     {
       id: 4,
       name: "Roberto Silva",
       role: "Voluntário há 3 anos",
-      text: "Ser voluntário no Instituto TechFuturo é uma das experiências mais gratificantes da minha vida. Ver o crescimento e a transformação dos jovens me motiva a continuar contribuindo com esta causa tão importante."
+      text: "Ser voluntário no Conexão Metropolitana é uma das experiências mais gratificantes da minha vida. Ver o crescimento e a transformação dos jovens me motiva a continuar contribuindo com esta causa tão importante."
     }
   ];
   

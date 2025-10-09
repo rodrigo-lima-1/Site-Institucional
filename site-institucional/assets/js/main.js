@@ -17,6 +17,7 @@ const AppState = {
     projetos: "src/pages/projetos.html",
     associados: "src/pages/associados.html",
     contatos: "src/pages/contatos.html",
+    "jornal-digital": "src/pages/jornal-digital.html",
   },
 };
 

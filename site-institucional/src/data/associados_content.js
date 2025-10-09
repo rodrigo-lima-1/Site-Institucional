@@ -59,13 +59,13 @@ const associadosContent = {
         id: 1,
         name: "Pedro Henrique",
         role: "Ex-aluno, Desenvolvedor Front-end",
-        text: "O Instituto TechFuturo mudou a minha vida. Graças aos cursos e à mentoria, consegui meu primeiro emprego na área de tecnologia."
+        text: "O Conexão Metropolitana mudou a minha vida. Graças aos cursos e à mentoria, consegui meu primeiro emprego na área de tecnologia."
       },
       {
         id: 2,
         name: "Laura Santos",
         role: "Mãe de Aluno",
-        text: "Meu filho sempre foi apaixonado por tecnologia, mas não tínhamos condições de pagar um curso. O Instituto TechFuturo abriu as portas para ele e hoje ele está realizando o sonho de ser programador."
+        text: "Meu filho sempre foi apaixonado por tecnologia, mas não tínhamos condições de pagar um curso. O Conexão Metropolitana abriu as portas para ele e hoje ele está realizando o sonho de ser programador."
       }
     ]
   }

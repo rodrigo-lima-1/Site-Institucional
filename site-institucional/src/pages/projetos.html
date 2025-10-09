@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Projetos | Conexão Metropolitana</title>
-  <link rel="stylesheet" href="../src/styles/main.css">
-  <link rel="stylesheet" href="../src/styles/components.css">
-  <link rel="stylesheet" href="../src/styles/responsive.css">
+  <link rel="stylesheet" href="../styles/projetos.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
 </head>
 <body>  
 <!-- PROJETOS PAGE -->
 <div class="page-content" id="projetos-page">
   <!-- Hero Section -->
-  <section class="hero" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/projetos/projeto_image_1.png') center/cover; padding: 100px 0 var(--spacing-2xl) 0;">
+  <section class="hero">
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">Nossos Projetos</h1>
@@ -24,9 +25,9 @@
   </section>
 
   <!-- Filtros Section -->
-  <section class="section" style="padding: var(--spacing-xl) 0;">
+  <section class="section" id="filtros-section">
     <div class="container">
-      <div class="filters-container" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-xl);">
+      <div class="filters-container">
         <button class="filter-btn active" data-filter="all" onclick="filterProjects('all')">
           Todos os Projetos
         </button>
@@ -60,7 +61,7 @@
   </section>
 
   <!-- Projetos Concluídos Section -->
-  <section class="section" id="completed-projects-section" style="background-color: var(--light-gray);">
+  <section class="section" id="completed-projects-section">
     <div class="container">
       <h2 class="section-title">Projetos Concluídos</h2>
       <p class="section-subtitle">
@@ -80,36 +81,36 @@
         Números que demonstram a transformação real que nossos projetos proporcionam.
       </p>
       
-      <div class="impact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-bottom: var(--spacing-2xl);">
-        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); border-radius: var(--border-radius-lg);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">👥</div>
-          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">500+</div>
-          <div style="font-size: var(--font-size-lg);">Jovens Beneficiados</div>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div>👥</div>
+          <div>500+</div>
+          <div>Jovens Beneficiados</div>
         </div>
-        
-        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); color: var(--white); border-radius: var(--border-radius-lg);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💼</div>
-          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">85%</div>
-          <div style="font-size: var(--font-size-lg);">Taxa de Empregabilidade</div>
+
+        <div class="impact-card">
+          <div>💼</div>
+          <div>85%</div>
+          <div>Taxa de Empregabilidade</div>
         </div>
-        
-        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); color: var(--white); border-radius: var(--border-radius-lg);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🏆</div>
-          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">15</div>
-          <div style="font-size: var(--font-size-lg);">Prêmios Recebidos</div>
+
+        <div class="impact-card">
+          <div>🏆</div>
+          <div>15</div>
+          <div>Prêmios Recebidos</div>
         </div>
-        
-        <div class="impact-card" style="text-align: center; padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: var(--white); border-radius: var(--border-radius-lg);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🌍</div>
-          <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-sm);">50+</div>
-          <div style="font-size: var(--font-size-lg);">Comunidades Atendidas</div>
+
+        <div class="impact-card">
+          <div>🌍</div>
+          <div>50+</div>
+          <div>Comunidades Atendidas</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Depoimentos Section -->
-  <section class="section" style="background-color: var(--light-gray);">
+  <section class="section" id="depoimentos-section">
     <div class="container">
       <h2 class="section-title">O Que Dizem Nossos Beneficiários</h2>
       <p class="section-subtitle">
@@ -123,43 +124,43 @@
   </section>
 
   <!-- Como Participar Section -->
-  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white);">
+  <section class="section" id="participation-section">
     <div class="container">
-      <h2 class="section-title" style="color: var(--white);">Como Participar dos Nossos Projetos</h2>
-      <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+      <h2 class="section-title">Como Participar dos Nossos Projetos</h2>
+      <p class="section-subtitle">
         Existem várias formas de se envolver e contribuir para o sucesso dos nossos projetos.
       </p>
-      
-      <div class="participation-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); margin-top: var(--spacing-2xl);">
-        <div class="participation-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🎓</div>
-          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Seja um Aluno</h3>
-          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+
+      <div class="participation-grid">
+        <div class="participation-card">
+          <div>🎓</div>
+          <h3>Seja um Aluno</h3>
+          <p>
             Inscreva-se em nossos programas e transforme sua carreira através da tecnologia.
           </p>
-          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          <a href="#" class="btn" onclick="navigateTo('contatos')">
             Inscrever-se
           </a>
         </div>
-        
-        <div class="participation-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">🤝</div>
-          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Seja um Voluntário</h3>
-          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+
+        <div class="participation-card">
+          <div>🤝</div>
+          <h3>Seja um Voluntário</h3>
+          <p>
             Compartilhe seu conhecimento e experiência como mentor ou instrutor.
           </p>
-          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          <a href="#" class="btn" onclick="navigateTo('contatos')">
             Voluntariar-se
           </a>
         </div>
-        
-        <div class="participation-card" style="text-align: center; padding: var(--spacing-xl); background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius-lg); backdrop-filter: blur(10px);">
-          <div style="font-size: 3rem; margin-bottom: var(--spacing-md);">💰</div>
-          <h3 style="color: var(--white); margin-bottom: var(--spacing-md);">Seja um Apoiador</h3>
-          <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-lg);">
+
+        <div class="participation-card">
+          <div>💰</div>
+          <h3>Seja um Apoiador</h3>
+          <p>
             Contribua financeiramente ou com recursos para ampliar nosso impacto.
           </p>
-          <a href="#" class="btn" style="background-color: var(--white); color: var(--primary-color);" onclick="navigateTo('contatos')">
+          <a href="#" class="btn" onclick="navigateTo('contatos')">
             Apoiar
           </a>
         </div>
@@ -168,97 +169,11 @@
   </section>
 </div>
 
-<style>
-/* Estilos específicos da página de projetos */
-.filter-btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: 2px solid var(--primary-color);
-  background-color: transparent;
-  color: var(--primary-color);
-  border-radius: var(--border-radius-md);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
 
-.filter-btn:hover,
-.filter-btn.active {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
 
-.project-status {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.project-status.active {
-  background-color: #dcfce7;
-  color: #166534;
-}
-
-.project-status.completed {
-  background-color: #dbeafe;
-  color: #1e40af;
-}
-
-.impact-card,
-.participation-card {
-  transition: transform var(--transition-normal);
-}
-
-.impact-card:hover,
-.participation-card:hover {
-  transform: translateY(-5px);
-}
-
-.testimonial-card {
-  background: var(--white);
-  padding: var(--spacing-xl);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  text-align: center;
-  position: relative;
-}
-
-.testimonial-card::before {
-  content: '"';
-  font-size: 4rem;
-  color: var(--primary-color);
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  font-family: serif;
-}
-
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: var(--spacing-lg);
-  color: var(--medium-gray);
-}
-
-.testimonial-author {
-  border-top: 1px solid var(--light-gray);
-  padding-top: var(--spacing-md);
-}
-
-.author-name {
-  font-weight: 600;
-  color: var(--dark-gray);
-  margin-bottom: var(--spacing-xs);
-}
-
-.author-role {
-  color: var(--medium-gray);
-  font-size: var(--font-size-sm);
-}
-</style>
-
-<script>
+<script type="module">
+//import projetosContent from '../data/projetos_content.js';
+import projetosContent from '/src/data/projetos_content.js';
 // Script específico da página Projetos
 var allProjects = [];
 var currentFilter = 'all';
@@ -266,68 +181,31 @@ var currentFilter = 'all';
 document.addEventListener('DOMContentLoaded', function() {
   // Carregar todos os projetos
   loadAllProjects();
-  
+
   // Carregar depoimentos
   loadTestimonials();
-  
+
   // Adicionar animações aos elementos
   observeElements();
 });
 
 function loadAllProjects() {
-  // Simular carregamento de projetos (em um projeto real, viria de uma API)
-  const activeProjects = [
-    {
-      id: 1,
-      title: "Code for Change",
-      description: "Um programa de mentoria e desenvolvimento de software onde jovens criam soluções tecnológicas para problemas sociais reais. Atualmente, estamos desenvolvendo um aplicativo para auxiliar na gestão de resíduos em comunidades.",
-      image: "public/images/projetos/projeto_image_1.png",
-      status: "active",
-      tags: ["Desenvolvimento", "Impacto Social", "Meio Ambiente"],
-      category: "social",
-      participants: 45,
-      duration: "12 meses"
-    },
-    {
-      id: 2,
-      title: "TechGirls",
-      description: "Iniciativa focada em incentivar a participação feminina na área de tecnologia, oferecendo cursos, workshops e mentorias exclusivas para garotas. Nosso objetivo é reduzir a lacuna de gênero no setor de TI.",
-      image: "public/images/projetos/projeto_image_2.png",
-      status: "active",
-      tags: ["Inclusão", "Educação", "Mulheres na Tecnologia"],
-      category: "education",
-      participants: 60,
-      duration: "Contínuo"
-    }
-  ];
+  const activeProjects = (projetosContent.activeProjects?.projects || []).map(p => ({
+    ...p,
+    category: p.tags.includes("Educação") ? 'education' : 'social',
+    participants: p.id === 1 ? 45 : 60,
+    duration: p.id === 1 ? "12 meses" : "Contínuo"
+  }));
 
-  const completedProjects = [
-    {
-      id: 101,
-      title: "Conecta Comunidade",
-      description: "Plataforma web que conecta voluntários a projetos sociais em suas comunidades, facilitando a organização e a participação em ações de impacto. Mais de 500 voluntários cadastrados e 100 projetos concluídos.",
-      image: "public/images/projetos/projeto_image_1.png",
-      status: "completed",
-      tags: ["Voluntariado", "Conectividade", "Comunidade"],
-      category: "social",
-      participants: 200,
-      duration: "18 meses"
-    },
-    {
-      id: 102,
-      title: "Alfabetização Digital para Idosos",
-      description: "Programa que ofereceu aulas básicas de informática e uso de smartphones para idosos, promovendo a inclusão digital e melhorando sua qualidade de vida. Mais de 200 idosos alfabetizados digitalmente.",
-      image: "public/images/projetos/projeto_image_2.png",
-      status: "completed",
-      tags: ["Inclusão Digital", "Terceira Idade", "Educação"],
-      category: "education",
-      participants: 200,
-      duration: "24 meses"
-    }
-  ];
+  const completedProjects = (projetosContent.completedProjects?.projects || []).map(p => ({
+    ...p,
+    category: p.tags.includes("Educação") ? 'education' : 'social',
+    participants: 200,
+    duration: p.id === 101 ? "18 meses" : "24 meses"
+  }));
 
   allProjects = [...activeProjects, ...completedProjects];
-  
+
   // Renderizar projetos
   renderProjects();
 }
@@ -496,13 +374,4 @@ function observeElements() {
     });
   }
   </script>
-  <script type="module">
-  import projetosContent from '../src/data/projetos_content.js';
-
-  function renderProjetos() {
-    // Use projetosContent.activeProjects.projects e projetosContent.completedProjects.projects
-    // para renderizar os cards
-  }
-  renderProjetos();
-  </script> 
   </body>
