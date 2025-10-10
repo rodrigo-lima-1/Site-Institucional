@@ -22,7 +22,7 @@ const eventosContent = {
       },
       {
         id: 2,
-        title: "Funcionou",
+        title: "Palestra: Inteligência Artificial e o Futuro do Trabalho",
         date: "05 de Novembro de 2025",
         time: "19:00 - 21:00",
         location: "Auditório Principal - Conexão Metropolitana",
@@ -48,14 +48,14 @@ const eventosContent = {
         title: "Bootcamp de Lógica de Programação",
         date: "Julho de 2025",
         description: "Intenso bootcamp de uma semana focado em lógica de programação e algoritmos, preparando os alunos para desafios mais complexos.",
-        image: "/public/images/eventos/evento_image_passado_1.png" // Adicionar imagem correspondente
+        image: "/public/images/eventos/evento_image_3.png" // Adicionar imagem correspondente
       },
       {
         id: 102,
         title: "Feira de Profissões em TI",
         date: "Maio de 2025",
         description: "Evento que conectou nossos alunos com empresas de tecnologia, proporcionando oportunidades de estágio e networking.",
-        image: "/public/images/eventos/evento_image_passado_2.png" // Adicionar imagem correspondente
+        image: "/public/images/eventos/evento_image_2.png" // Adicionar imagem correspondente
       }
     ]
   }

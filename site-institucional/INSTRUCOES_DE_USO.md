@@ -11,6 +11,9 @@ python3 -m http.server 8000
 # Opção 2: Node.js
 npx http-server -p 8000
 
+# Opção 3: live-server
+npx live-server --port=8000
+
 # Acesse: http://localhost:8000
 ```
 

@@ -2,7 +2,7 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('public/images/eventos/evento_image_1.png') center/cover;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(16, 185, 129, 0.8)), url('../../public/images/eventos/evento_image_1.png') center/cover;
   padding: 100px 0 var(--spacing-2xl) 0;
 }
 

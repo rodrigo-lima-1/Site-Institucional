@@ -38,7 +38,6 @@
   </section>
 
   <!-- Próximos Eventos Section -->
-  <!--Corrigido aqui-->
   <section class="section" id="upcoming-events-section">
     <div class="container">
       <h2 class="section-title">Próximos Eventos</h2>
@@ -98,30 +97,70 @@
 
 
 <script type="module">
-//import eventosContent from '../data/eventos_content.js';
 import eventosContent from '/src/data/eventos_content.js';
-// Script específico da página Eventos
-var allEvents = [];
-var currentFilter = 'all';
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Carregar todos os eventos
-  console.log("Carregando eventos...");
+// ⭐ VARIÁVEIS GLOBAIS
+var allEvents = [];
+var currentEventFilter = 'all';
+
+// ⭐ FUNÇÃO DE ESPERA MELHORADA
+function waitForReady(callback) {
+  // Verificar se os containers existem
+  const checkContainers = () => {
+    const upcomingContainer = document.getElementById('upcoming-events-container');
+    const pastContainer = document.getElementById('past-events-container');
+    
+    if (upcomingContainer && pastContainer) {
+      console.log('✅ Containers encontrados, inicializando...');
+      callback();
+    } else {
+      console.log('⏳ Aguardando containers...');
+      setTimeout(checkContainers, 100);
+    }
+  };
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkContainers);
+  } else {
+    checkContainers();
+  }
+}
+
+// ⭐ GARANTIR QUE VALIDATIONUTILS EXISTE
+if (!window.ValidationUtils) {
+  window.ValidationUtils = {
+    isValidEmail: function(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    },
+    isValidPhone: function(phone) {
+      const phoneRegex = /^[\d\s\-\(\)]+$/;
+      return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 10;
+    }
+  };
+}
+
+// ⭐ EXPOR FUNÇÕES GLOBALMENTE
+window.loadAllEvents = loadAllEvents;
+window.setupNewsletterForm = setupNewsletterForm;
+window.observeElements = observeElements;
+window.filterEvents = filterEvents;
+window.registerForEvent = registerForEvent;
+window.viewEventGallery = viewEventGallery;
+
+// ⭐ INICIALIZAR QUANDO PRONTO
+waitForReady(function() {
+  console.log('🎉 Eventos: Inicializando...');
   loadAllEvents();
-  
-  // Configurar formulário de newsletter
-  console.log("Configurando formulário de newsletter...");
   setupNewsletterForm();
-  
-  // Adicionar animações aos elementos
-  console.log("Configurando observadores de elementos...");
   observeElements();
 });
 
 function loadAllEvents() {
+  console.log('📅 Carregando eventos...');
+  
   const upcomingEvents = (eventosContent.upcomingEvents?.events || []).map(e => ({ 
     ...e,
-    // Determinar tipo baseado no título
     type: e.title.toLowerCase().includes('workshop') ? 'workshop' :
           e.title.toLowerCase().includes('palestra') ? 'palestra' :
           e.title.toLowerCase().includes('hackathon') ? 'hackathon' :
@@ -137,31 +176,51 @@ function loadAllEvents() {
   }));
 
   allEvents = [...upcomingEvents, ...pastEvents];
+  console.log('📊 Total de eventos:', allEvents.length);
   renderEvents();
 }
 
 function renderEvents() {
-  console.log('Eventos carregados:', allEvents);
-  console.log('Filtro atual:', currentFilter);
+  console.log('🎨 Renderizando eventos - filtro:', currentEventFilter);
+  
   const upcomingContainer = document.getElementById('upcoming-events-container');
   const pastContainer = document.getElementById('past-events-container');
   
-  if (!upcomingContainer || !pastContainer || !window.cardComponent) return;
+  if (!upcomingContainer || !pastContainer) {
+    console.warn('⚠️ Containers não encontrados');
+    return;
+  }
 
-  // Filtrar eventos
-  const filteredEvents = filterEventsByType(allEvents, currentFilter);
-  
-  // Renderizar eventos futuros
-  const upcomingEvents = filteredEvents.filter(event => event.status === 'upcoming');
-  upcomingContainer.innerHTML = window.cardComponent.renderCardGrid(upcomingEvents, 'event', 3);
-  
-  // Renderizar eventos passados
-  const pastEvents = filteredEvents.filter(event => event.status === 'past');
-  pastContainer.innerHTML = window.cardComponent.renderCardGrid(pastEvents, 'event', 3);
+  const filteredEvents = filterEventsByType(allEvents, currentEventFilter);
+  const upcomingEvents = filteredEvents.filter(ev => ev.status === 'upcoming');
+  const pastEvents = filteredEvents.filter(ev => ev.status === 'past');
 
-  // Atualizar visibilidade das seções
-  document.getElementById('upcoming-events-section').classList.toggle('hidden', upcomingEvents.length === 0);
-  document.getElementById('past-events-section').classList.toggle('hidden', pastEvents.length === 0);
+  // Tentar usar cardComponent se disponível
+  if (window.cardComponent && typeof window.cardComponent.renderCardGrid === 'function') {
+    try {
+      upcomingContainer.innerHTML = window.cardComponent.renderCardGrid(upcomingEvents, 'event', 3);
+      pastContainer.innerHTML = window.cardComponent.renderCardGrid(pastEvents, 'event', 3);
+      console.log('✅ Renderizado com cardComponent');
+    } catch (err) {
+      console.warn('⚠️ cardComponent falhou, usando fallback', err);
+      upcomingContainer.innerHTML = upcomingEvents.map(ev => renderEventCard(ev)).join('');
+      pastContainer.innerHTML = pastEvents.map(ev => renderEventCard(ev)).join('');
+    }
+  } else {
+    upcomingContainer.innerHTML = upcomingEvents.map(ev => renderEventCard(ev)).join('');
+    pastContainer.innerHTML = pastEvents.map(ev => renderEventCard(ev)).join('');
+    console.log('✅ Renderizado com renderEventCard');
+  }
+
+  // Mostrar/ocultar seções
+  const upcomingSection = document.getElementById('upcoming-events-section');
+  const pastSection = document.getElementById('past-events-section');
+  if (upcomingSection && pastSection) {
+    upcomingSection.classList.toggle('hidden', upcomingEvents.length === 0 && currentEventFilter !== 'upcoming');
+    pastSection.classList.toggle('hidden', pastEvents.length === 0 && currentEventFilter !== 'past');
+  }
+  
+  console.log('📈 Eventos renderizados:', { upcoming: upcomingEvents.length, past: pastEvents.length });
 }
 
 function renderEventCard(event) {
@@ -211,52 +270,54 @@ function filterEventsByType(events, filter) {
 }
 
 function filterEvents(filter) {
-  currentFilter = filter;
+  currentEventFilter = filter;
   
   // Atualizar botões ativos
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.remove('active');
   });
-  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+  const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
   
   // Re-renderizar eventos
   renderEvents();
 }
 
 function registerForEvent(eventId) {
-  // Implementar lógica de inscrição
   alert(`Redirecionando para inscrição do evento ${eventId}...`);
-  // Aqui você implementaria a navegação para um formulário de inscrição
+  // Implementar navegação para formulário de inscrição
 }
 
 function viewEventGallery(eventId) {
-  // Implementar visualização de galeria
   alert(`Abrindo galeria do evento ${eventId}...`);
-  // Aqui você implementaria um modal com fotos do evento
+  // Implementar modal com fotos do evento
 }
 
 function setupNewsletterForm() {
   const form = document.getElementById('newsletter-form');
-  if (!form) return;
+  if (!form) {
+    console.warn('⚠️ Formulário de newsletter não encontrado');
+    return;
+  }
+  
+  console.log('📧 Newsletter form configurado');
   
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     
     const email = document.getElementById('newsletter-email').value;
     
-    if (!ValidationUtils.isValidEmail(email)) {
+    if (!window.ValidationUtils.isValidEmail(email)) {
       alert('Por favor, insira um e-mail válido.');
       return;
     }
     
-    // Simular envio
     alert('Obrigado! Você foi inscrito em nossa newsletter.');
     form.reset();
   });
 }
 
 function observeElements() {
-  // Intersection Observer para animações
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -268,13 +329,13 @@ function observeElements() {
     threshold: 0.1
   });
   
-  // Observar elementos com animação
   document.querySelectorAll('.fade-in').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
+  
+  console.log('👁️ Observer configurado');
 }
 </script>
-
