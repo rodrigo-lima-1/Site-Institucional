@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Projetos | Conexão Metropolitana</title>
-  <link rel="stylesheet" href="../styles/projetos.css">
-  <link rel="stylesheet" href="../styles/main.css">
-  <link rel="stylesheet" href="../styles/components.css">
-  <link rel="stylesheet" href="../styles/responsive.css">
+  <link rel="stylesheet" href="src/styles/projetos.css">
+  <link rel="stylesheet" href="src/styles/main.css">
+  <link rel="stylesheet" href="src/styles/components.css">
+  <link rel="stylesheet" href="src/styles/responsive.css">
 </head>
 <body>  
 <!-- PROJETOS PAGE -->
@@ -172,45 +172,85 @@
 
 
 <script type="module">
-//import projetosContent from '../data/projetos_content.js';
 import projetosContent from '/src/data/projetos_content.js';
-// Script específico da página Projetos
+
+// ⭐ VARIÁVEIS GLOBAIS
 var allProjects = [];
-var currentFilter = 'all';
+var currentProjectFilter = 'all';
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Carregar todos os projetos
+// ⭐ FUNÇÃO DE ESPERA MELHORADA
+function waitForReady(callback) {
+  const checkContainers = () => {
+    const activeContainer = document.getElementById('active-projects-container');
+    const completedContainer = document.getElementById('completed-projects-container');
+    const testimonialsContainer = document.getElementById('testimonials-container');
+    
+    if (activeContainer && completedContainer) {
+      console.log('✅ Containers de projetos encontrados, inicializando...');
+      callback();
+    } else {
+      console.log('⏳ Aguardando containers de projetos...');
+      setTimeout(checkContainers, 100);
+    }
+  };
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkContainers);
+  } else {
+    checkContainers();
+  }
+}
+
+// ⭐ EXPOR FUNÇÕES GLOBALMENTE
+window.loadAllProjects = loadAllProjects;
+window.loadTestimonials = loadTestimonials;
+window.observeElements = observeElements;
+window.filterProjects = filterProjects;
+window.viewProjectDetails = viewProjectDetails;
+window.joinProject = joinProject;
+window.renderProjects = renderProjects;
+window.renderProjectCard = renderProjectCard;
+window.renderTestimonialCard = renderTestimonialCard;
+window.filterProjectsByType = filterProjectsByType;
+
+// ⭐ INICIALIZAR QUANDO PRONTO
+waitForReady(function() {
+  console.log('🎉 Projetos: Inicializando...');
   loadAllProjects();
-
-  // Carregar depoimentos
   loadTestimonials();
-
-  // Adicionar animações aos elementos
   observeElements();
 });
 
 function loadAllProjects() {
+  console.log('📁 Carregando projetos...');
+  
   const activeProjects = (projetosContent.activeProjects?.projects || []).map(p => ({
     ...p,
-    category: p.tags.includes("Educação") ? 'education' : 'social',
+    category: p.tags && p.tags.includes("Educação") ? 'education' : 'social',
     participants: p.id === 1 ? 45 : 60,
-    duration: p.id === 1 ? "12 meses" : "Contínuo"
+    duration: p.id === 1 ? "12 meses" : "Contínuo",
+    status: 'active'
   }));
 
   const completedProjects = (projetosContent.completedProjects?.projects || []).map(p => ({
     ...p,
-    category: p.tags.includes("Educação") ? 'education' : 'social',
+    category: p.tags && p.tags.includes("Educação") ? 'education' : 'social',
     participants: 200,
-    duration: p.id === 101 ? "18 meses" : "24 meses"
+    duration: p.id === 101 ? "18 meses" : "24 meses",
+    status: 'completed'
   }));
 
   allProjects = [...activeProjects, ...completedProjects];
-
-  // Renderizar projetos
+  console.log('📊 Total de projetos:', allProjects.length);
+  console.log('   - Ativos:', activeProjects.length);
+  console.log('   - Concluídos:', completedProjects.length);
+  
   renderProjects();
 }
 
 function loadTestimonials() {
+  console.log('💬 Carregando depoimentos...');
+  
   const testimonials = [
     {
       id: 1,
@@ -235,44 +275,66 @@ function loadTestimonials() {
   const container = document.getElementById('testimonials-container');
   if (container) {
     container.innerHTML = testimonials.map(testimonial => renderTestimonialCard(testimonial)).join('');
+    console.log('✅ Depoimentos carregados:', testimonials.length);
+  } else {
+    console.warn('⚠️ Container de depoimentos não encontrado');
   }
 }
 
 function renderProjects() {
+  console.log('🎨 Renderizando projetos - filtro:', currentProjectFilter);
+  
   const activeContainer = document.getElementById('active-projects-container');
   const completedContainer = document.getElementById('completed-projects-container');
   
-  if (!activeContainer || !completedContainer) return;
+  if (!activeContainer || !completedContainer) {
+    console.warn('⚠️ Containers não encontrados');
+    return;
+  }
   
-  // Filtrar projetos
-  const filteredProjects = filterProjectsByType(allProjects, currentFilter);
+  const filteredProjects = filterProjectsByType(allProjects, currentProjectFilter);
   const activeProjects = filteredProjects.filter(project => project.status === 'active');
   const completedProjects = filteredProjects.filter(project => project.status === 'completed');
   
   // Renderizar projetos ativos
-  activeContainer.innerHTML = activeProjects.map(project => renderProjectCard(project)).join('');
+  if (activeProjects.length > 0) {
+    activeContainer.innerHTML = activeProjects.map(project => renderProjectCard(project)).join('');
+  } else {
+    activeContainer.innerHTML = '<p class="no-projects">Nenhum projeto ativo encontrado.</p>';
+  }
   
   // Renderizar projetos concluídos
-  completedContainer.innerHTML = completedProjects.map(project => renderProjectCard(project)).join('');
+  if (completedProjects.length > 0) {
+    completedContainer.innerHTML = completedProjects.map(project => renderProjectCard(project)).join('');
+  } else {
+    completedContainer.innerHTML = '<p class="no-projects">Nenhum projeto concluído encontrado.</p>';
+  }
   
   // Mostrar/ocultar seções baseado no filtro
   const activeSection = document.getElementById('active-projects-section');
   const completedSection = document.getElementById('completed-projects-section');
   
-  if (currentFilter === 'completed') {
-    activeSection.style.display = 'none';
-    completedSection.style.display = 'block';
-  } else if (currentFilter === 'active') {
-    activeSection.style.display = 'block';
-    completedSection.style.display = 'none';
-  } else {
-    activeSection.style.display = activeProjects.length > 0 ? 'block' : 'none';
-    completedSection.style.display = completedProjects.length > 0 ? 'block' : 'none';
+  if (activeSection && completedSection) {
+    if (currentProjectFilter === 'completed') {
+      activeSection.style.display = 'none';
+      completedSection.style.display = 'block';
+    } else if (currentProjectFilter === 'active') {
+      activeSection.style.display = 'block';
+      completedSection.style.display = 'none';
+    } else {
+      activeSection.style.display = activeProjects.length > 0 ? 'block' : 'none';
+      completedSection.style.display = completedProjects.length > 0 ? 'block' : 'none';
+    }
   }
+  
+  console.log('📈 Projetos renderizados:', { 
+    active: activeProjects.length, 
+    completed: completedProjects.length 
+  });
 }
 
 function renderProjectCard(project) {
-  const tagsHtml = project.tags ? 
+  const tagsHtml = project.tags && project.tags.length > 0 ? 
     `<div class="card-tags">
       ${project.tags.map(tag => `<span class="card-tag">${tag}</span>`).join('')}
     </div>` : '';
@@ -282,7 +344,7 @@ function renderProjectCard(project) {
 
   return `
     <div class="card fade-in">
-      <img src="${project.image}" alt="${project.title}" class="card-image" loading="lazy">
+      <img src="${project.image}" alt="${project.title}" class="card-image" loading="lazy" onerror="this.src='/public/images/placeholder.png'">
       <div class="card-content">
         <h3 class="card-title">${project.title}</h3>
         <div class="card-meta">
@@ -293,11 +355,11 @@ function renderProjectCard(project) {
         <p class="card-description">${project.description}</p>
         ${tagsHtml}
         <div class="card-actions">
-          <button class="btn btn-primary" onclick="viewProjectDetails('${project.id}')">
+          <button class="btn btn-primary" onclick="viewProjectDetails(${project.id})">
             Ver Detalhes
           </button>
           ${project.status === 'active' ? 
-            `<button class="btn btn-outline" onclick="joinProject('${project.id}')">
+            `<button class="btn btn-outline" onclick="joinProject(${project.id})">
               Participar
             </button>` : ''
           }
@@ -310,6 +372,7 @@ function renderProjectCard(project) {
 function renderTestimonialCard(testimonial) {
   return `
     <div class="testimonial-card fade-in">
+      <div class="testimonial-quote">❝</div>
       <p class="testimonial-text">${testimonial.text}</p>
       <div class="testimonial-author">
         <h4 class="author-name">${testimonial.name}</h4>
@@ -320,58 +383,78 @@ function renderTestimonialCard(testimonial) {
 }
 
 function filterProjectsByType(projects, filter) {
+  console.log('🔍 Filtrando projetos:', filter);
+  
   if (filter === 'all') return projects;
+  
   if (filter === 'active' || filter === 'completed') {
     return projects.filter(project => project.status === filter);
   }
-  return projects.filter(project => project.category === filter);
+  
+  if (filter === 'education' || filter === 'social') {
+    return projects.filter(project => project.category === filter);
+  }
+  
+  return projects;
 }
 
 function filterProjects(filter) {
-  currentFilter = filter;
+  console.log('🎯 Mudando filtro para:', filter);
+  currentProjectFilter = filter;
   
   // Atualizar botões ativos
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.remove('active');
   });
-  document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+  
+  const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
+  if (activeBtn) {
+    activeBtn.classList.add('active');
+  }
   
   // Re-renderizar projetos
   renderProjects();
 }
 
 function viewProjectDetails(projectId) {
-  // Implementar visualização de detalhes do projeto
+  console.log('👁️ Visualizando projeto:', projectId);
   alert(`Abrindo detalhes do projeto ${projectId}...`);
-  // Aqui você implementaria um modal ou página de detalhes
+  // TODO: Implementar modal ou página de detalhes
+  // Exemplo: window.location.hash = `#projeto-${projectId}`;
 }
 
 function joinProject(projectId) {
-  // Implementar inscrição no projeto
+  console.log('✋ Inscrevendo no projeto:', projectId);
   alert(`Redirecionando para inscrição no projeto ${projectId}...`);
-  // Aqui você implementaria um formulário de inscrição
+  // TODO: Implementar formulário de inscrição ou navegação
+  // Exemplo: navigateTo('contatos', { projeto: projectId });
 }
 
 function observeElements() {
-  // Intersection Observer para animações
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
       }
-      });
-    }, {
-      threshold: 0.1
     });
-    
-    // Observar elementos com animação
-    document.querySelectorAll('.fade-in').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-  }
-  </script>
-  </body>
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  // Observar todos os elementos com animação
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+  
+  console.log('👁️ Observer configurado para', document.querySelectorAll('.fade-in').length, 'elementos');
+}
+
+// Log de inicialização
+console.log('📦 Módulo de projetos carregado');
+</script>
+</body>

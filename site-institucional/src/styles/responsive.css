@@ -272,14 +272,15 @@
   }
 }
 
-/* High DPI Displays */
+/* High DPI Displays - CORRIGIDO */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .logo-icon {
     background-size: contain;
   }
   
+  /* Removido image-rendering incorreto */
   .card-image {
-    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
   }
 }
 
@@ -307,4 +308,3 @@
     transform: none;
   }
 }
-

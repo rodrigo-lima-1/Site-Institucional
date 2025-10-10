@@ -373,17 +373,17 @@
 
 .hero-slide:nth-child(2) {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(37, 99, 235, 0.9)),
-              url('../../public/images/projetos/projeto_image_1.png') center/cover;
+              url('/public/images/projetos/projeto_image_1.png') center/cover;
 }
 
 .hero-slide:nth-child(3) {
   background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(37, 99, 235, 0.9)),
-              url('../../public/images/projetos/projeto_image_2.png') center/cover;
+              url('/public/images/projetos/projeto_image_2.png') center/cover;
 }
 
 .hero-slide:nth-child(4) {
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(139, 69, 19, 0.9)),
-              url('../../public/images/eventos/evento_image_1.png') center/cover;
+              url('/public/images/eventos/evento_image_1.png') center/cover;
 }
 
 /* Indicadores do carrossel */

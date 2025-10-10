@@ -25,7 +25,7 @@ class Header {
           <div class="header-content">
             <!-- Logo -->
             <a href="#" class="logo" onclick="navigateTo('home')">
-              <img src="public/icons/logo conexao.png" alt="Logo Conexão" width="145px" height="86px"/>
+              <img src="/public/icons/logo conexao.png" alt="Logo Conexão" width="145px" height="86px"/>
             </a>
 
             <!-- Desktop Navigation -->
